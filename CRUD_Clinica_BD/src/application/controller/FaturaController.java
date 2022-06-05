@@ -14,18 +14,16 @@ public class FaturaController implements IFaturaController
 	private TextField txtFatNome;
 	private TextField txtFatDescricao;
 	private TextField txtFatValor;
-	private TextField txtFatData;
 	private TextField txtFatIdPaciente;
 	private TextField txtFatNomePaciente;
 	private TextArea taListarFatura;
 	
-	public FaturaController(TextField txtFatCodigo, TextField txtFatNome, TextField txtFatDescricao, TextField txtFatValor, TextField txtFatData, TextField txtFatIdPaciente , TextField txtFatNomePaciente, TextArea taListarFatura) 
+	public FaturaController(TextField txtFatCodigo, TextField txtFatNome, TextField txtFatDescricao, TextField txtFatValor, TextField txtFatIdPaciente , TextField txtFatNomePaciente, TextArea taListarFatura) 
 	{
 		this.txtFatCodigo = txtFatCodigo;
 		this.txtFatNome = txtFatNome;
 		this.txtFatDescricao = txtFatDescricao;
 		this.txtFatValor = txtFatValor;
-		this.txtFatData = txtFatData;
 		this.txtFatIdPaciente = txtFatIdPaciente;
 		this.txtFatNomePaciente = txtFatNomePaciente;
 		this.taListarFatura = taListarFatura;
@@ -73,7 +71,6 @@ public class FaturaController implements IFaturaController
 		txtFatNome.setText(f.getFatNome());
 		txtFatDescricao.setText(f.getFatDescricao());
 		txtFatValor.setText(String.valueOf(f.getFatValor()));
-		txtFatData.setText(String.valueOf(f.getFatData()));
 		//txtFatIdPaciente.setText(String.valueOf(f.getFatIdPaciente()));
 		//txtFatNomePaciente.setText(String.valueOf(f.getFatIdPaciente()));
 		
@@ -90,10 +87,10 @@ public class FaturaController implements IFaturaController
 		FaturaDAO pDAO = new FaturaDAO();
 		List<Fatura> listaFaturas = pDAO.buscaFaturas();
 		
-		StringBuffer buffer = new  StringBuffer("Código\t\t\t\tNome\t\t\t\tDescrição\n");
+		StringBuffer buffer = new  StringBuffer("Código\t\t\t\tNome\t\t\t\tDescrição\t\t\t\tValor\n");
 		for(Fatura f: listaFaturas)
 		{
-			buffer.append(f.getFatId()+"\t\t\t\t\t"+f.getFatNome()+"\t\t\t\t"+f.getFatDescricao()+"\n");
+			buffer.append(f.getFatId()+"\t\t\t\t\t"+f.getFatNome()+"\t\t\t\t"+f.getFatDescricao()+"\t\t\t\t"+f.getFatValor()+"\n");
 		}
 		
 		taListarFatura.setText(buffer.toString());
@@ -106,7 +103,6 @@ public class FaturaController implements IFaturaController
 		txtFatNome.setText("");
 		txtFatDescricao.setText("");
 		txtFatValor.setText("");
-		txtFatData.setText("");
 		//txtFatIdPaciente.setText("");
 		//txtFatNomePaciente.setText("");
 		

@@ -38,8 +38,6 @@ public class PrincipalController {
 	@FXML
 	private TextField txtFatValor;
 	@FXML
-	private TextField txtFatData;
-	@FXML
 	private TextField txtFatIdPaciente;
 	@FXML
 	private TextField txtFatNomePaciente;
@@ -51,7 +49,7 @@ public class PrincipalController {
 		String cmd = event.getSource().toString();
 		System.out.println(cmd);
 		
-		FaturaController faturaController = new FaturaController (txtFatCodigo, txtFatNome, txtFatDescricao, txtFatValor,txtFatData, txtFatIdPaciente, txtFatNomePaciente, taListarFatura);
+		FaturaController faturaController = new FaturaController (txtFatCodigo, txtFatNome, txtFatDescricao, txtFatValor, txtFatIdPaciente, txtFatNomePaciente, taListarFatura);
 		
 		if((cmd.contains("Inserir") || cmd.contains("Atualizar")) && (txtFatCodigo.getText().isEmpty() || txtFatNome.getText().isEmpty() || txtFatDescricao.getText().isEmpty()))
 		{
@@ -59,7 +57,7 @@ public class PrincipalController {
 		}
 		else 
 		{
-			if(cmd.contains("Excluir") || cmd.contains("Buscar") || cmd.contains("txtCodigoProfessor") && txtFatCodigo.getText().isEmpty())
+			if(cmd.contains("Excluir") || cmd.contains("Buscar") || cmd.contains("txtFatIdPaciente") && txtFatCodigo.getText().isEmpty())
 			{
 				JOptionPane.showMessageDialog(null, "Preencha o código", "ERRO", JOptionPane.ERROR_MESSAGE);
 			}
@@ -78,7 +76,6 @@ public class PrincipalController {
 						f.setFatNome(txtFatNome.getText());
 						f.setFatDescricao(txtFatDescricao.getText());
 						f.setFatValor((Double.parseDouble(txtFatValor.getText())));
-						f.setFatData((LocalDate.parse(txtFatData.getText())));
 						//f.setFatIdPaciente((Integer.parseInt(txtFatData.getText())));
 						
 						if(cmd.contains("Inserir"))

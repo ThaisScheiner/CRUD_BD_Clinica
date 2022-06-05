@@ -25,13 +25,12 @@ private Connection c;
 	@Override
 	public void insereFatura(Fatura f) throws SQLException 
 	{
-		String sql = "INSERT INTO fatura (FatId, FatNome, FatDescricao, FatValor, FatData )";
+		String sql = "INSERT INTO fatura (FatId, FatNome, FatDescricao, FatValor)";
 		sql += "VALUES ('" + f.getFatId() + "', ";
 		sql += " '" + f.getFatNome() + "', ";
 		sql += " '" + f.getFatDescricao() + "', ";
-		sql += " '" + f.getFatValor() + ", ";
-		sql += " '" + f.getFatData() + "') ";
-				System.out.println("Query preparada: " + sql);
+		sql += " '" + f.getFatValor() + "') ";
+		System.out.println("Query preparada: " + sql);
 		try 
 		{
 			PreparedStatement stmt = c.prepareStatement(sql);
@@ -48,8 +47,7 @@ private Connection c;
 	@Override
 	public void atualizarFatura(Fatura f) throws SQLException 
 	{
-		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		String sql = "UPDDATE fatura SET fatNome = ?, fatDescricao = ?, fatValor = ?, fatData = ? WHERE codigo = ?";
+		String sql = "UPDDATE fatura SET fatNome = ?, fatDescricao = ?, fatValor = ? WHERE codigo = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		
@@ -57,7 +55,6 @@ private Connection c;
 		ps.setString(2, f.getFatNome());
 		ps.setString(3, f.getFatDescricao());
 		ps.setDouble(4, f.getFatValor());
-		ps.setDate(5, Date.valueOf(f.getFatData().format(fmt)), null);
 		//ps.setInt(6, f.getFatIdPaciente());
 		
 		ps.execute();
@@ -93,6 +90,7 @@ private Connection c;
 		{
 			f.setFatNome(rs.getString("fatNome"));
 			f.setFatDescricao(rs.getString("fatDescricao"));
+			f.setFatValor(rs.getDouble("fatValor"));
 			cont++;
 		}
 		
