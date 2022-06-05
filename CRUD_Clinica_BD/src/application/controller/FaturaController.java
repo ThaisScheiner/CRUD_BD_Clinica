@@ -14,18 +14,18 @@ public class FaturaController implements IFaturaController
 	private TextField txtFatNome;
 	private TextField txtFatDescricao;
 	private TextField txtFatValor;
-	private TextField txtFatIdPaciente;
-	private TextField txtFatNomePaciente;
+	//private TextField txtFatIdPaciente;
+	//private TextField txtFatNomePaciente;
 	private TextArea taListarFatura;
 	
-	public FaturaController(TextField txtFatCodigo, TextField txtFatNome, TextField txtFatDescricao, TextField txtFatValor, TextField txtFatIdPaciente , TextField txtFatNomePaciente, TextArea taListarFatura) 
+	public FaturaController(TextField txtFatCodigo, TextField txtFatNome, TextField txtFatDescricao, TextField txtFatValor, TextArea taListarFatura) 
 	{
 		this.txtFatCodigo = txtFatCodigo;
 		this.txtFatNome = txtFatNome;
 		this.txtFatDescricao = txtFatDescricao;
 		this.txtFatValor = txtFatValor;
-		this.txtFatIdPaciente = txtFatIdPaciente;
-		this.txtFatNomePaciente = txtFatNomePaciente;
+		//this.txtFatIdPaciente = txtFatIdPaciente;
+		//this.txtFatNomePaciente = txtFatNomePaciente;
 		this.taListarFatura = taListarFatura;
 	}
 

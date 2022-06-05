@@ -7,10 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 import javax.swing.JOptionPane;
 
+import application.model.Exame;
 import application.model.Fatura;
 import javafx.event.ActionEvent;
 
@@ -37,29 +37,47 @@ public class PrincipalController {
 	private Button btnBuscarFatura;
 	@FXML
 	private TextField txtFatValor;
+	//@FXML
+	//private TextField txtFatIdPaciente;
+	//@FXML
+	//private TextField txtFatNomePaciente;
 	@FXML
-	private TextField txtFatIdPaciente;
+	private TextArea taListarExame;
 	@FXML
-	private TextField txtFatNomePaciente;
+	private Button btnInserirExame;
+	@FXML
+	private Button btnAtualizarExame;
+	@FXML
+	private Button btnExcluirExame;
+	@FXML
+	private Button btnListarExame;
+	@FXML
+	private TextField txtExaCodigo;
+	@FXML
+	private TextField txtExaNome;
+	@FXML
+	private TextField txtExaDescricao;
+	@FXML
+	private Button btnBuscarExame;
 
-	// Event Listener on Button[#btnInserirFatura].onAction
+	// Event Listener on TextField[#txtFatNomePaciente].onAction
 	@FXML
 	public void acaoFatura(ActionEvent event) 
 	{
 		String cmd = event.getSource().toString();
 		System.out.println(cmd);
 		
-		FaturaController faturaController = new FaturaController (txtFatCodigo, txtFatNome, txtFatDescricao, txtFatValor, txtFatIdPaciente, txtFatNomePaciente, taListarFatura);
+		FaturaController faturaController = new FaturaController (txtFatCodigo, txtFatNome, txtFatDescricao, txtFatValor,  taListarFatura);
 		
-		if((cmd.contains("Inserir") || cmd.contains("Atualizar")) && (txtFatCodigo.getText().isEmpty() || txtFatNome.getText().isEmpty() || txtFatDescricao.getText().isEmpty()))
+		if((cmd.contains("Inserir") || cmd.contains("Atualizar")) && (txtFatCodigo.getText().isEmpty() ))
 		{
-			JOptionPane.showMessageDialog(null, "Preencha o código", "ERRO", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Preencha o código da Fatura", "ERRO", JOptionPane.ERROR_MESSAGE);
 		}
 		else 
 		{
-			if(cmd.contains("Excluir") || cmd.contains("Buscar") || cmd.contains("txtFatIdPaciente") && txtFatCodigo.getText().isEmpty())
+			if(cmd.contains("Excluir") || cmd.contains("Buscar") || cmd.contains("txtFatCodigo") && txtFatCodigo.getText().isEmpty())
 			{
-				JOptionPane.showMessageDialog(null, "Preencha o código", "ERRO", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Preencha o código da Fatura", "ERRO", JOptionPane.ERROR_MESSAGE);
 			}
 			else
 			{
@@ -104,5 +122,67 @@ public class PrincipalController {
 			}
 		}
 		
+	}
+	
+	// Event Listener on Button[#btnInserirExame].onAction
+	@FXML
+	public void acaoExame(ActionEvent event) 
+	{
+		String cmd = event.getSource().toString();
+		System.out.println(cmd);
+		
+		ExameController exameController = new ExameController (txtExaCodigo, txtExaNome, txtExaDescricao, taListarExame);
+		
+		if((cmd.contains("Inserir") || cmd.contains("Atualizar")) && (txtExaCodigo.getText().isEmpty() || txtExaNome.getText().isEmpty() || txtExaDescricao.getText().isEmpty()))
+		{
+			JOptionPane.showMessageDialog(null, "Preencha o código do Exame", "ERRO", JOptionPane.ERROR_MESSAGE);
+		}
+		else 
+		{
+			if(cmd.contains("Excluir") || cmd.contains("Buscar") || cmd.contains("txtExaCodigo") && txtExaCodigo.getText().isEmpty())
+			{
+				JOptionPane.showMessageDialog(null, "Preencha o código do Exame", "ERRO", JOptionPane.ERROR_MESSAGE);
+			}
+			else
+			{
+				try 
+				{
+					if(cmd.contains("Listar"))
+					{
+						exameController.buscaExames();
+					}
+					else
+					{
+						Exame e = new Exame();
+						e.setExameId((Integer.parseInt(txtExaCodigo.getText())));
+						e.setExameNome(txtExaNome.getText());
+						e.setExameDescricao(txtExaDescricao.getText());
+						//f.setFatIdPaciente((Integer.parseInt(txtFatData.getText())));
+						
+						if(cmd.contains("Inserir"))
+						{
+							exameController.insereExame(e);
+						}
+						else if(cmd.contains("Atualizar"))
+						{
+							exameController.atualizarExame(e);
+						}
+						else if(cmd.contains("Excluir"))
+						{
+							exameController.excluiExame(e);
+						}
+						else if(cmd.contains("Buscar") || cmd.contains("txtExaCodigo"))
+						{
+							exameController.buscaExame(e);
+						}
+					}
+				} 
+				catch (ClassNotFoundException | SQLException e) 
+				{
+					JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 }

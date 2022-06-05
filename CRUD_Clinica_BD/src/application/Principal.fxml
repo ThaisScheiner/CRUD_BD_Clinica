@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -24,13 +25,36 @@
                   <Button fx:id="btnExcluirFatura" layoutX="434.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoFatura" text="Excluir" />
                   <Button fx:id="btnListarFatura" layoutX="635.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoFatura" text="Listar" />
                   <TextField fx:id="txtFatCodigo" layoutX="61.0" layoutY="43.0" onAction="#acaoFatura" prefHeight="25.0" prefWidth="230.0" promptText="Código da Fatura" />
-                  <TextField fx:id="txtFatNome" layoutX="61.0" layoutY="81.0" onAction="#acaoFatura" prefHeight="25.0" prefWidth="622.0" promptText="Nome da Fatura" />
-                  <TextField fx:id="txtFatDescricao" layoutX="63.0" layoutY="117.0" onAction="#acaoFatura" prefHeight="25.0" prefWidth="619.0" promptText="Descrição da Fatura" />
+                  <TextField fx:id="txtFatNome" layoutX="61.0" layoutY="81.0" onAction="#acaoFatura" prefHeight="25.0" prefWidth="622.0" promptText="Nome da Fatura (ex: Exame)" />
+                  <TextField fx:id="txtFatDescricao" layoutX="63.0" layoutY="117.0" onAction="#acaoFatura" prefHeight="25.0" prefWidth="619.0" promptText="Descrição da Fatura(ex:  sangue)" />
                   <Button fx:id="btnBuscarFatura" layoutX="328.0" layoutY="43.0" mnemonicParsing="false" onAction="#acaoFatura" text="Buscar" />
-                  <TextField fx:id="txtFatValor" layoutX="63.0" layoutY="152.0" onAction="#acaoFatura" prefHeight="25.0" prefWidth="277.0" promptText="Valor da Fatura" />
-                  <TextField fx:id="txtFatData" layoutX="404.0" layoutY="152.0" onAction="#acaoFatura" prefHeight="25.0" prefWidth="278.0" promptText="Data da Fatura" />
-                  <TextField fx:id="txtFatIdPaciente" layoutX="63.0" layoutY="196.0" onAction="#acaoFatura" prefHeight="25.0" prefWidth="132.0" promptText="Id do Paciente" />
-                  <TextField fx:id="txtFatNomePaciente" layoutX="404.0" layoutY="196.0" onAction="#acaoFatura" prefHeight="25.0" prefWidth="276.0" promptText="Nome do Paciente" />
+                  <TextField fx:id="txtFatValor" layoutX="63.0" layoutY="209.0" onAction="#acaoFatura" prefHeight="25.0" prefWidth="277.0" promptText="Valor da Fatura" />
+                  <TextField fx:id="txtFatIdPaciente" layoutX="63.0" layoutY="157.0" onAction="#acaoFatura" prefHeight="25.0" prefWidth="275.0" promptText="Id do Paciente" />
+                  <TextField fx:id="txtFatNomePaciente" layoutX="366.0" layoutY="157.0" onAction="#acaoFatura" prefHeight="25.0" prefWidth="313.0" promptText="Nome do Paciente" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    
+    <Tab text="Exame">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ScrollPane layoutX="14.0" layoutY="308.0">
+                     <content>
+                        <TextArea fx:id="taListarExame" prefHeight="200.0" prefWidth="715.0" />
+                     </content>
+                  </ScrollPane>
+                  <Button fx:id="btnInserirExame" layoutX="61.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Inserir" />
+                  <Button fx:id="btnAtualizarExame" layoutX="231.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Atualizar" />
+                  <Button fx:id="btnExcluirExame" layoutX="434.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Excluir" />
+                  <Button fx:id="btnListarExame" layoutX="635.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Listar" />
+                  <TextField fx:id="txtExaCodigo" layoutX="61.0" layoutY="43.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="230.0" promptText="Código do Exame " />
+                  <TextField fx:id="txtExaNome" layoutX="61.0" layoutY="81.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="622.0" promptText="Nome do Exame" />
+                  <TextField fx:id="txtExaDescricao" layoutX="63.0" layoutY="117.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="619.0" promptText="Descrição do Exame (Instruções de preparo antes de realizar o exame)" />
+                  <Button fx:id="btnBuscarExame" layoutX="328.0" layoutY="43.0" mnemonicParsing="false" onAction="#acaoExame" text="Buscar" />
+                  <TextField fx:id="txtFatIdPaciente" layoutX="63.0" layoutY="157.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="275.0" promptText="Id do Paciente" />
+                  <TextField fx:id="txtFatNomePaciente" layoutX="366.0" layoutY="157.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="313.0" promptText="Nome do Paciente" />
+                  <DatePicker fx:id="dtData" layoutX="63.0" layoutY="202.0" onAction="#acaoExame" />
                </children></AnchorPane>
       </content>
     </Tab>
