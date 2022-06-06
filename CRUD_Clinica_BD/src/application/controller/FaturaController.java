@@ -42,8 +42,8 @@ public class FaturaController implements IFaturaController
 	@Override
 	public void atualizarFatura(Fatura f) throws SQLException, ClassNotFoundException 
 	{
-		FaturaDAO pDAO = new FaturaDAO();
-		pDAO.atualizarFatura(f);
+		FaturaDAO fDAO = new FaturaDAO();
+		fDAO.atualizarFatura(f);
 		limpaCamposFatura();
 		buscaFaturas();
 		

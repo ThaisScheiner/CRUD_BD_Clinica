@@ -43,13 +43,13 @@ public class ExameDAO implements IExameDAO
 
 	@Override
 	public void atualizarExame(Exame e) throws SQLException, ClassNotFoundException {
-		String sql = "UPDDATE exame SET ExameId = ?, ExameNome = ?, ExameDescricao = ? WHERE codigo = ?";
+		String sql = "UPDATE exame SET ExameNome = ?, ExameDescricao = ? WHERE ExameId = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		
-		ps.setInt(1, e.getExameId());
-		ps.setString(2, e.getExameNome());
-		ps.setString(3, e.getExameDescricao());
+		ps.setString(1, e.getExameNome());
+		ps.setString(2, e.getExameDescricao());
+		ps.setInt(3, e.getExameId());
 		//ps.setInt(6, f.getFatIdPaciente());
 		
 		ps.execute();
@@ -60,7 +60,7 @@ public class ExameDAO implements IExameDAO
 
 	@Override
 	public void excluiExame(Exame e) throws SQLException, ClassNotFoundException {
-		String sql = "DELETE exame WHERE codigo = ?";
+		String sql = "DELETE exame WHERE ExameId = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		ps.setInt(1, e.getExameId());

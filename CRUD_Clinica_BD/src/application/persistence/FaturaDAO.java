@@ -48,14 +48,14 @@ private Connection c;
 	@Override
 	public void atualizarFatura(Fatura f) throws SQLException 
 	{
-		String sql = "UPDATE fatura SET fatNome = ?, fatDescricao = ?, fatValor = ? WHERE FatId = ?";
+		String sql = "UPDATE fatura SET FatNome = ?, FatDescricao = ?, FatValor = ? WHERE FatId = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		
-		ps.setInt(1, f.getFatId());
-		ps.setString(2, f.getFatNome());
-		ps.setString(3, f.getFatDescricao());
-		ps.setDouble(4, f.getFatValor());
+		ps.setString(1, f.getFatNome());
+		ps.setString(2, f.getFatDescricao());
+		ps.setDouble(3, f.getFatValor());
+		ps.setInt(4, f.getFatId());
 		//ps.setInt(6, f.getFatIdPaciente());
 		
 		ps.execute();
@@ -66,7 +66,7 @@ private Connection c;
 	@Override
 	public void excluiFatura(Fatura f) throws SQLException 
 	{
-		String sql = "DELETE fatura WHERE codigo = ?";
+		String sql = "DELETE fatura WHERE FatId = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		ps.setInt(1, f.getFatId());
