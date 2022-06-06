@@ -6,15 +6,13 @@ import java.sql.SQLException;
 
 public class GenericDAO 
 {
-	private Connection c;
 	
-	private static final String JDBC_URL = "jdbc:mariadb://localhost:3306/clinica";
-    private static final String JDBC_USER = "root";
-    private static final String JDBC_PASSWORD = "123456";
-    private Connection con = null;
-
+	private Connection c;
+		
 		public Connection getConnection() throws ClassNotFoundException, SQLException
 		{
+			/*
+			 -------------------CONEXÃO COM BANCO DE DADOS MARIA DB----------------------------------
 			 try 
 		        {
 		            Class.forName("org.mariadb.jdbc.Driver");
@@ -26,23 +24,20 @@ public class GenericDAO
 		        }
 			return con;
 			
-			
-			
-			
-			/*
-			
+		*/	
+			//-------------------CONEXÃO COM BANCO DE DADOS SQL SERVER----------------------------------
 			String hostName = "localhost";
 			String dbName = "clinica";
 			String user = "Thais";
-			String senha = "";
+			String senha = "123456";
 			
 			Class.forName("net.sourceforge.jtds.jdbc.Driver");
 			
-			c = DriverManager.getConnection(String.format("jdbc:jtds:sqlserver://%s:1433;databaseName=$s;user=%s;password=%s",hostName, dbName,user, senha));
+			c = DriverManager.getConnection(String.format("jdbc:jtds:sqlserver://%s:1433;databaseName=%s;user=%s;password=%s;",hostName, dbName,user, senha));
 			
 			return c;
 			
-			*/
+			
 		}
 	
 }

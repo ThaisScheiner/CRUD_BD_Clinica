@@ -138,7 +138,7 @@ public class PrincipalController {
 		}
 		else 
 		{
-			if(cmd.contains("Excluir") || cmd.contains("Buscar") && cmd.contains("txtExaCodigo") && txtExaCodigo.getText().isEmpty())
+			if(cmd.contains("Excluir") || cmd.contains("Buscar") && cmd.contains("txtExaCodigo") || txtExaCodigo.getText().isEmpty())
 			{
 				JOptionPane.showMessageDialog(null, "Preencha o código do Exame", "ERRO", JOptionPane.ERROR_MESSAGE);
 			}
