@@ -87,10 +87,10 @@ public class FaturaController implements IFaturaController
 		FaturaDAO pDAO = new FaturaDAO();
 		List<Fatura> listaFaturas = pDAO.buscaFaturas();
 		
-		StringBuffer buffer = new  StringBuffer("Código\t\t\t\tNome\t\t\t\tDescrição\t\t\t\tValor\n");
+		StringBuffer buffer = new  StringBuffer("Código\t\t\t\t\tNome\t\t\t\t\t\t\t\t\t\tDescrição\t\t\t\t\t\t\t\t\t\tValor\n");
 		for(Fatura f: listaFaturas)
 		{
-			buffer.append(f.getFatId()+"\t\t\t\t\t"+f.getFatNome()+"\t\t\t\t"+f.getFatDescricao()+"\t\t\t\t"+f.getFatValor()+"\n");
+			buffer.append(f.getFatId()+"\t\t\t\t\t\t\t\t\t"+f.getFatNome()+"\t\t\t\t\t\t\t\t\t"+f.getFatDescricao()+"\t\t\t\t\t\t\t\t\t"+f.getFatValor()+"\n");
 		}
 		
 		taListarFatura.setText(buffer.toString());

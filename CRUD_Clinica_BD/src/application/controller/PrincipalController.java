@@ -3,7 +3,7 @@ package application.controller;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
-
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.sql.SQLException;
@@ -40,7 +40,7 @@ public class PrincipalController {
 	//@FXML
 	//private TextField txtFatIdPaciente;
 	//@FXML
-	//private TextField txtFatNomePaciente;
+	private Label lblFatNomePaciente;
 	@FXML
 	private TextArea taListarExame;
 	@FXML
@@ -69,13 +69,13 @@ public class PrincipalController {
 		
 		FaturaController faturaController = new FaturaController (txtFatCodigo, txtFatNome, txtFatDescricao, txtFatValor,  taListarFatura);
 		
-		if((cmd.contains("Inserir") || cmd.contains("Atualizar")) && (txtFatCodigo.getText().isEmpty() ))
+		if((cmd.contains("Inserir") || cmd.contains("Atualizar")) && (txtFatCodigo.getText().isEmpty() || txtFatNome.getText().isEmpty() || txtFatDescricao.getText().isEmpty() || txtFatValor.getText().isEmpty()))
 		{
 			JOptionPane.showMessageDialog(null, "Preencha o código da Fatura", "ERRO", JOptionPane.ERROR_MESSAGE);
 		}
 		else 
 		{
-			if(cmd.contains("Excluir") || cmd.contains("Buscar") || cmd.contains("txtFatCodigo") && txtFatCodigo.getText().isEmpty())
+			if(cmd.contains("Excluir") || cmd.contains("Buscar") && cmd.contains("txtFatCodigo") && txtFatCodigo.getText().isEmpty())
 			{
 				JOptionPane.showMessageDialog(null, "Preencha o código da Fatura", "ERRO", JOptionPane.ERROR_MESSAGE);
 			}
@@ -93,7 +93,6 @@ public class PrincipalController {
 						f.setFatId((Integer.parseInt(txtFatCodigo.getText())));
 						f.setFatNome(txtFatNome.getText());
 						f.setFatDescricao(txtFatDescricao.getText());
-						f.setFatValor((Double.parseDouble(txtFatValor.getText())));
 						//f.setFatIdPaciente((Integer.parseInt(txtFatData.getText())));
 						
 						if(cmd.contains("Inserir"))
