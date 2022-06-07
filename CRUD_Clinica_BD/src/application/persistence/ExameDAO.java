@@ -22,10 +22,11 @@ public class ExameDAO implements IExameDAO
 	
 	@Override
 	public void insereExame(Exame e) throws SQLException, ClassNotFoundException {
-		String sql = "INSERT INTO exame (ExameId, ExameNome, ExameDescricao)";
-		sql += " VALUES ('" + e.getExameId() + "', ";
-		sql += " '" + e.getExameNome() + "', ";
-		sql += " '" + e.getExameDescricao() + "') ";
+		String sql = "INSERT INTO exame (ExaId, ExaNome, ExaDescricao, ExaIdPaciente )";
+		sql += " VALUES ('" + e.getExaId() + "', ";
+		sql += " '" + e.getExaNome() + "', ";
+		sql += " '" + e.getExaDescricao() + "', ";
+		sql += " '" + e.getExaIdPaciente() + "') ";
 
 		System.out.println("Query preparada: " + sql);
 		try 
@@ -43,14 +44,14 @@ public class ExameDAO implements IExameDAO
 
 	@Override
 	public void atualizarExame(Exame e) throws SQLException, ClassNotFoundException {
-		String sql = "UPDATE exame SET ExameNome = ?, ExameDescricao = ? WHERE ExameId = ?";
+		String sql = "UPDATE exame SET ExaNome = ?, ExaDescricao = ?, ExaIdPaciente = ? WHERE ExaId = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		
-		ps.setString(1, e.getExameNome());
-		ps.setString(2, e.getExameDescricao());
-		ps.setInt(3, e.getExameId());
-		//ps.setInt(6, f.getFatIdPaciente());
+		ps.setString(1, e.getExaNome());
+		ps.setString(2, e.getExaDescricao());
+		ps.setInt(3, e.getExaId());
+		ps.setInt(4, e.getExaIdPaciente());
 		
 		ps.execute();
 		ps.close();
@@ -60,10 +61,10 @@ public class ExameDAO implements IExameDAO
 
 	@Override
 	public void excluiExame(Exame e) throws SQLException, ClassNotFoundException {
-		String sql = "DELETE exame WHERE ExameId = ?";
+		String sql = "DELETE FROM exame WHERE ExaId = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
-		ps.setInt(1, e.getExameId());
+		ps.setInt(1, e.getExaId());
 		
 		ps.execute();
 		ps.close();
@@ -73,18 +74,19 @@ public class ExameDAO implements IExameDAO
 	@Override
 	public Exame buscaExame(Exame e) throws SQLException 
 	{
-		String sql = "SELECT ExameId, ExameNome, ExameDescricao FROM exame WHERE ExameId = ?";
+		String sql = "SELECT ExaId, ExaNome, ExaDescricao, ExaIdPaciente FROM exame WHERE ExaId = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
-		ps.setInt(1, e.getExameId());
+		ps.setInt(1, e.getExaId());
 		
 		int cont = 0;
 		ResultSet rs = ps.executeQuery();
 		
 		if(rs.next())
 		{
-			e.setExameNome(rs.getString("ExameNome"));
-			e.setExameDescricao(rs.getString("ExameDescricao"));
+			e.setExaNome(rs.getString("ExaNome"));
+			e.setExaDescricao(rs.getString("ExaDescricao"));
+			e.setExaIdPaciente(rs.getInt("ExaIdPaciente"));
 			cont++;
 		}
 		
@@ -100,7 +102,7 @@ public class ExameDAO implements IExameDAO
 
 	@Override
 	public List<Exame> buscaExames() throws SQLException {
-		String sql = "SELECT ExameId, ExameNome, ExameDescricao FROM exame ";
+		String sql = "SELECT ExaId, ExaNome, ExaDescricao, ExaIdPaciente FROM exame ";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		
@@ -111,9 +113,10 @@ public class ExameDAO implements IExameDAO
 		while (rs.next())
 		{
 			Exame e = new Exame();
-			e.setExameId(rs.getInt("ExameId"));
-			e.setExameNome(rs.getString("ExameNome"));
-			e.setExameDescricao(rs.getString("ExameDescricao"));
+			e.setExaId(rs.getInt("ExaId"));
+			e.setExaNome(rs.getString("ExaNome"));
+			e.setExaDescricao(rs.getString("ExaDescricao"));
+			e.setExaIdPaciente(rs.getInt("ExaIdPaciente"));
 			
 			listaExames.add(e);
 		}

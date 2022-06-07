@@ -12,7 +12,55 @@
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="551.0" prefWidth="744.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.PrincipalController">
   <tabs>
-    <Tab text="Fatura">
+  
+   <Tab text="PACIENTE">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ScrollPane layoutX="14.0" layoutY="308.0">
+                     <content>
+                        <TextArea fx:id="taListarPaciente" prefHeight="200.0" prefWidth="715.0" />
+                     </content>
+                  </ScrollPane>
+                  <Button fx:id="btnInserirPaciente" layoutX="61.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoPaciente" text="Inserir" />
+                  <Button fx:id="btnAtualizarPaciente" layoutX="231.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoPaciente" text="Atualizar" />
+                  <Button fx:id="btnExcluirPaciente" layoutX="434.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoPaciente" text="Excluir" />
+                  <Button fx:id="btnListarPaciente" layoutX="635.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoPaciente" text="Listar" />
+                  <TextField fx:id="txtPacCodigo" layoutX="61.0" layoutY="43.0" onAction="#acaoPaciente" prefHeight="25.0" prefWidth="230.0" promptText="Código do Paciente" />
+                  <TextField fx:id="txtPacNome" layoutX="61.0" layoutY="81.0" onAction="#acaoPaciente" prefHeight="25.0" prefWidth="622.0" promptText="Nome do Paciente" />
+                  <Button fx:id="btnBuscarPaciente" layoutX="328.0" layoutY="43.0" mnemonicParsing="false" onAction="#acaoPaciente" text="Buscar" />
+                  <Button fx:id="btnCopiarPaciente" layoutX="539.0" layoutY="43.0" mnemonicParsing="false" onAction="#copiaPaciente" text="Copiar Paciente" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    
+    
+     <Tab text="EXAME">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ScrollPane layoutX="14.0" layoutY="308.0">
+                     <content>
+                        <TextArea fx:id="taListarExame" prefHeight="200.0" prefWidth="715.0" />
+                     </content>
+                  </ScrollPane>
+                  <Button fx:id="btnInserirExame" layoutX="61.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Inserir" />
+                  <Button fx:id="btnAtualizarExame" layoutX="231.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Atualizar" />
+                  <Button fx:id="btnExcluirExame" layoutX="434.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Excluir" />
+                  <Button fx:id="btnListarExame" layoutX="635.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Listar" />
+                  <TextField fx:id="txtExaCodigo" layoutX="61.0" layoutY="43.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="230.0" promptText="Código do Exame " />
+                  <TextField fx:id="txtExaNome" layoutX="61.0" layoutY="81.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="622.0" promptText="Nome do Exame" />
+                  <TextField fx:id="txtExaDescricao" layoutX="63.0" layoutY="117.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="619.0" promptText="Descrição do Exame (Instruções de preparo antes de realizar o exame)" />
+                  <Button fx:id="btnBuscarExame" layoutX="328.0" layoutY="43.0" mnemonicParsing="false" onAction="#acaoExame" text="Buscar" />
+                  <TextField fx:id="txtPacCodigoExame" layoutX="63.0" layoutY="157.0" onAction="#copiaPaciente" prefHeight="25.0" prefWidth="275.0" promptText="Id do Paciente" />
+                  <DatePicker fx:id="dtData" layoutX="63.0" layoutY="202.0" onAction="#acaoExame" promptText="Data do Exame" />
+                  <Label fx:id="lblPacCodigoExame" layoutX="377.0" layoutY="158.0" onDragDetected="#copiaPaciente" prefHeight="24.0" prefWidth="306.0" text="Nome do Paciente" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    
+    
+    <Tab text="FATURA">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -30,35 +78,13 @@
                   <TextField fx:id="txtFatDescricao" layoutX="63.0" layoutY="117.0" onAction="#acaoFatura" prefHeight="25.0" prefWidth="619.0" promptText="Descrição da Fatura(ex:  sangue)" />
                   <Button fx:id="btnBuscarFatura" layoutX="328.0" layoutY="43.0" mnemonicParsing="false" onAction="#acaoFatura" text="Buscar" />
                   <TextField fx:id="txtFatValor" layoutX="63.0" layoutY="209.0" onAction="#acaoFatura" prefHeight="25.0" prefWidth="277.0" promptText="Valor da Fatura" />
-                  <Label fx:id="lblFaNomePaciente" layoutX="379.0" layoutY="159.0" prefHeight="25.0" prefWidth="300.0" text="Nome do Paciente" />
-                  <TextField fx:id="txtFatIdPaciente" layoutX="61.0" layoutY="159.0" prefHeight="25.0" prefWidth="278.0" promptText="Código do Paciente" />
+                  <Label fx:id="lblFatNomePaciente" layoutX="379.0" layoutY="159.0" onDragDetected="#copiaPaciente" prefHeight="25.0" prefWidth="300.0" text="Nome do Paciente" />
+                  <TextField fx:id="txtFatIdPaciente" layoutX="61.0" layoutY="159.0" onAction="#copiaPaciente" prefHeight="25.0" prefWidth="278.0" promptText="Código do Paciente" />
                </children></AnchorPane>
       </content>
     </Tab>
     
-    <Tab text="Exame">
-      <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <ScrollPane layoutX="14.0" layoutY="308.0">
-                     <content>
-                        <TextArea fx:id="taListarExame" prefHeight="200.0" prefWidth="715.0" />
-                     </content>
-                  </ScrollPane>
-                  <Button fx:id="btnInserirExame" layoutX="61.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Inserir" />
-                  <Button fx:id="btnAtualizarExame" layoutX="231.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Atualizar" />
-                  <Button fx:id="btnExcluirExame" layoutX="434.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Excluir" />
-                  <Button fx:id="btnListarExame" layoutX="635.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Listar" />
-                  <TextField fx:id="txtExaCodigo" layoutX="61.0" layoutY="43.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="230.0" promptText="Código do Exame " />
-                  <TextField fx:id="txtExaNome" layoutX="61.0" layoutY="81.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="622.0" promptText="Nome do Exame" />
-                  <TextField fx:id="txtExaDescricao" layoutX="63.0" layoutY="117.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="619.0" promptText="Descrição do Exame (Instruções de preparo antes de realizar o exame)" />
-                  <Button fx:id="btnBuscarExame" layoutX="328.0" layoutY="43.0" mnemonicParsing="false" onAction="#acaoExame" text="Buscar" />
-                  <TextField fx:id="txtFatIdPaciente" layoutX="63.0" layoutY="157.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="275.0" promptText="Id do Paciente" />
-                  <TextField fx:id="txtFatNomePaciente" layoutX="366.0" layoutY="157.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="313.0" promptText="Nome do Paciente" />
-                  <DatePicker fx:id="dtData" layoutX="63.0" layoutY="202.0" onAction="#acaoExame" />
-               </children></AnchorPane>
-      </content>
-    </Tab>
-    
+   
+   
   </tabs>
 </TabPane>

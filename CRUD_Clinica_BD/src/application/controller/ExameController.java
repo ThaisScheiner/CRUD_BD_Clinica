@@ -13,6 +13,7 @@ public class ExameController implements IExameController
 	private TextField txtExaId;
 	private TextField txtExaNome;
 	private TextField txtExaDescricao;
+	private TextField txtPacCodigoExame;
 	private TextArea taListarExame;
 	
 	public ExameController(TextField txtExaId, TextField txtExaNome, TextField txtExaDescricao, TextArea taListarExame) {
@@ -57,9 +58,9 @@ public class ExameController implements IExameController
 		ExameDAO eDAO = new ExameDAO();
 		e = eDAO.buscaExame(e);
 		
-		txtExaId.setText(String.valueOf(e.getExameId()));
-		txtExaNome.setText(e.getExameNome());
-		txtExaDescricao.setText(e.getExameDescricao());
+		txtExaId.setText(String.valueOf(e.getExaId()));
+		txtExaNome.setText(e.getExaNome());
+		txtExaDescricao.setText(e.getExaDescricao());
 		
 	}
 
@@ -72,10 +73,10 @@ public class ExameController implements IExameController
 		ExameDAO eDAO = new ExameDAO();
 		List<Exame> listaExames = eDAO.buscaExames();
 		
-		StringBuffer buffer = new  StringBuffer("Código\t\t\t\t\t\t\t\tNome do Exame\t\t\t\t\t\t\t\t\t\t\tDescrição\n");
+		StringBuffer buffer = new  StringBuffer("Código\t\t\tNome do Exame\t\t\t\t\t\t\t\t\tDescrição\t\t\t\t\t\t\t\tId Paciente\n");
 		for(Exame e: listaExames)
 		{
-			buffer.append(e.getExameId()+"\t\t\t\t\t\t\t\t"+e.getExameNome()+"\t\t\t\t\t\t\t\t\t\t\t"+e.getExameDescricao()+"\n");
+			buffer.append(e.getExaId()+"\t\t\t\t\t\t\t\t"+e.getExaNome()+"\t\t\t\t\t\t\t\t\t\t\t"+e.getExaDescricao()+"\t\t\t\t\t\t\t\t\t\t\t"+e.getExaIdPaciente()+"\n");
 		}
 		
 		taListarExame.setText(buffer.toString());
@@ -87,11 +88,6 @@ public class ExameController implements IExameController
 		txtExaId.setText("");
 		txtExaNome.setText("");
 		txtExaDescricao.setText("");
-	}
-
-	@Override
-	public void buscaFaturas() throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
 		
 	}
 	

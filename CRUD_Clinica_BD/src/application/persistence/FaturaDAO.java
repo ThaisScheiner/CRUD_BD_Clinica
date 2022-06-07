@@ -26,11 +26,12 @@ private Connection c;
 	public void insereFatura(Fatura f) throws SQLException 
 	{
 		
-		String sql = "INSERT INTO fatura (FatId, FatNome, FatDescricao, FatValor)";
+		String sql = "INSERT INTO fatura (FatId, FatNome, FatDescricao, FatValor, FatIdPaciente)";
 		sql += "VALUES ('" + f.getFatId() + "', ";
 		sql += " '" + f.getFatNome() + "', ";
 		sql += " '" + f.getFatDescricao() + "', ";
-		sql += " '" + f.getFatValor() + "') ";
+		sql += " '" + f.getFatValor() + "', ";
+		sql += " '" + f.getFatIdPaciente() + "') ";
 		System.out.println("Query preparada: " + sql);
 		try 
 		{
@@ -66,7 +67,7 @@ private Connection c;
 	@Override
 	public void excluiFatura(Fatura f) throws SQLException 
 	{
-		String sql = "DELETE fatura WHERE FatId = ?";
+		String sql = "DELETE FROM fatura WHERE FatId = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		ps.setInt(1, f.getFatId());
@@ -93,6 +94,7 @@ private Connection c;
 			f.setFatNome(rs.getString("fatNome"));
 			f.setFatDescricao(rs.getString("fatDescricao"));
 			f.setFatValor(rs.getDouble("fatValor"));
+			f.setFatIdPaciente(rs.getInt("fatIdPaciente"));
 			cont++;
 		}
 		
@@ -110,7 +112,7 @@ private Connection c;
 	@Override
 	public List<Fatura> buscaFaturas() throws SQLException
 	{
-		String sql = "SELECT fatId, fatNome, fatDescricao, fatValor FROM fatura";
+		String sql = "SELECT fatId, fatNome, fatDescricao, fatValor, fatIdPaciente FROM fatura";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		
@@ -125,6 +127,7 @@ private Connection c;
 			f.setFatNome(rs.getString("fatNome"));
 			f.setFatDescricao(rs.getString("fatDescricao"));
 			f.setFatValor(rs.getDouble("fatValor"));
+			f.setFatIdPaciente(rs.getInt("fatIdPaciente"));
 			
 			listaFaturas.add(f);
 		}

@@ -2,34 +2,41 @@ package application.model;
 
 public class Exame 
 {
-	int ExameId;
-	String ExameNome;
-	String ExameDescricao;
+	private int ExaId;
+	private String ExaNome;
+	private String ExaDescricao;
+	private int ExaIdPaciente;
 	
-	public int getExameId() {
-		return ExameId;
+	public int getExaId() {
+		return ExaId;
 	}
-	public void setExameId(int exameId) {
-		ExameId = exameId;
+	public void setExaId(int exaId) {
+		ExaId = exaId;
 	}
-	public String getExameNome() {
-		return ExameNome;
+	public String getExaNome() {
+		return ExaNome;
 	}
-	public void setExameNome(String exameNome) {
-		ExameNome = exameNome;
+	public void setExaNome(String exaNome) {
+		ExaNome = exaNome;
 	}
-	public String getExameDescricao() {
-		return ExameDescricao;
+	public String getExaDescricao() {
+		return ExaDescricao;
 	}
-	public void setExameDescricao(String exameDescricao) {
-		ExameDescricao = exameDescricao;
+	public void setExaDescricao(String exaDescricao) {
+		ExaDescricao = exaDescricao;
+	}
+	public int getExaIdPaciente() {
+		return ExaIdPaciente;
+	}
+	public void setExaIdPaciente(int exaIdPaciente) {
+		ExaIdPaciente = exaIdPaciente;
 	}
 	
 	@Override
 	public String toString() {
-		return "Exame [ExameId=" + ExameId + ", ExameNome=" + ExameNome + ", ExameDescricao=" + ExameDescricao + "]";
+		return "Exame [ExaId=" + ExaId + ", ExaNome=" + ExaNome + ", ExaDescricao=" + ExaDescricao + ", ExaIdPaciente="
+				+ ExaIdPaciente + "]";
 	}
-	
 	
 	
 }

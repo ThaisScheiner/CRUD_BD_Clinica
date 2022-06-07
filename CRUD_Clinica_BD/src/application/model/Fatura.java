@@ -10,8 +10,7 @@ public class Fatura
 	private String fatNome;
 	private String fatDescricao;
 	private double fatValor;
-	
-	//private int fatIdPaciente;
+	private int fatIdPaciente;
 	
 	public int getFatId() {
 		return fatId;
@@ -38,12 +37,12 @@ public class Fatura
 		this.fatValor = fatValor;
 	}
 
-	//public int getFatIdPaciente() {
-	//	return fatIdPaciente;
-	//}
-	//public void setFatIdPaciente(int fatIdPaciente) {
-	//	this.fatIdPaciente = fatIdPaciente;
-	//}
+	public int getFatIdPaciente() {
+		return fatIdPaciente;
+	}
+	public void setFatIdPaciente(int fatIdPaciente) {
+		this.fatIdPaciente = fatIdPaciente;
+	}
 	@Override
 	public String toString() {
 		return "[fatId=" + fatId + ", fatNome=" + fatNome + ", fatDescricao=" + fatDescricao + ", fatValor="

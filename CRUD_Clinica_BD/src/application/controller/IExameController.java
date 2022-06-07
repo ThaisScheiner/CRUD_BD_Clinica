@@ -6,7 +6,7 @@ import application.model.Exame;
 
 public interface IExameController 
 {
-	public void buscaFaturas() throws ClassNotFoundException, SQLException;
+	
 	void atualizarExame(Exame e) throws SQLException, ClassNotFoundException;
 	void excluiExame(Exame e) throws SQLException, ClassNotFoundException;
 	void insereExame(Exame e) throws SQLException, ClassNotFoundException;

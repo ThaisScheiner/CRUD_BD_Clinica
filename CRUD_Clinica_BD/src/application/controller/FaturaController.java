@@ -14,17 +14,17 @@ public class FaturaController implements IFaturaController
 	private TextField txtFatNome;
 	private TextField txtFatDescricao;
 	private TextField txtFatValor;
-	//private TextField txtFatIdPaciente;
+	private TextField txtFatIdPaciente;
 	//private TextField txtFatNomePaciente;
 	private TextArea taListarFatura;
 	
-	public FaturaController(TextField txtFatCodigo, TextField txtFatNome, TextField txtFatDescricao, TextField txtFatValor, TextArea taListarFatura) 
+	public FaturaController(TextField txtFatCodigo, TextField txtFatNome, TextField txtFatDescricao, TextField txtFatValor, TextField txtFatIdPaciente, TextArea taListarFatura) 
 	{
 		this.txtFatCodigo = txtFatCodigo;
 		this.txtFatNome = txtFatNome;
 		this.txtFatDescricao = txtFatDescricao;
 		this.txtFatValor = txtFatValor;
-		//this.txtFatIdPaciente = txtFatIdPaciente;
+		this.txtFatIdPaciente = txtFatIdPaciente;
 		//this.txtFatNomePaciente = txtFatNomePaciente;
 		this.taListarFatura = taListarFatura;
 	}
@@ -53,8 +53,8 @@ public class FaturaController implements IFaturaController
 	@Override
 	public void excluiFatura(Fatura f) throws SQLException, ClassNotFoundException 
 	{
-		FaturaDAO pDAO = new FaturaDAO();
-		pDAO.excluiFatura(f);
+		FaturaDAO fDAO = new FaturaDAO();
+		fDAO.excluiFatura(f);
 		limpaCamposFatura();
 		buscaFaturas();
 	}
@@ -64,14 +64,14 @@ public class FaturaController implements IFaturaController
 	{
 		limpaCamposFatura();
 		
-		FaturaDAO pDAO = new FaturaDAO();
-		f = pDAO.buscaFatura(f);
+		FaturaDAO fDAO = new FaturaDAO();
+		f = fDAO.buscaFatura(f);
 		
 		txtFatCodigo.setText(String.valueOf(f.getFatId()));
 		txtFatNome.setText(f.getFatNome());
 		txtFatDescricao.setText(f.getFatDescricao());
 		txtFatValor.setText(String.valueOf(f.getFatValor()));
-		//txtFatIdPaciente.setText(String.valueOf(f.getFatIdPaciente()));
+		txtFatIdPaciente.setText(String.valueOf(f.getFatIdPaciente()));
 		//txtFatNomePaciente.setText(String.valueOf(f.getFatIdPaciente()));
 		
 		
@@ -84,13 +84,13 @@ public class FaturaController implements IFaturaController
 		limpaCamposFatura();
 		taListarFatura.setText("");
 		
-		FaturaDAO pDAO = new FaturaDAO();
-		List<Fatura> listaFaturas = pDAO.buscaFaturas();
+		FaturaDAO fDAO = new FaturaDAO();
+		List<Fatura> listaFaturas = fDAO.buscaFaturas();
 		
-		StringBuffer buffer = new  StringBuffer("Código\t\t\t\t\tNome\t\t\t\t\t\t\t\t\t\tDescrição\t\t\t\t\t\t\t\t\t\tValor\n");
+		StringBuffer buffer = new  StringBuffer("Código\t\t\tNome\t\t\t\t\t\t\tDescrição\t\t\t\t\t\t\t\t\t\tValor\t\t\t\t\t\tId Paciente\n");
 		for(Fatura f: listaFaturas)
 		{
-			buffer.append(f.getFatId()+"\t\t\t\t\t\t\t\t\t"+f.getFatNome()+"\t\t\t\t\t\t\t\t\t"+f.getFatDescricao()+"\t\t\t\t\t\t\t\t\t"+f.getFatValor()+"\n");
+			buffer.append(f.getFatId()+"\t\t\t"+f.getFatNome()+"\t\t\t\t\t\t\t"+f.getFatDescricao()+"\t\t\t\t\t\t\t"+f.getFatValor()+"\t\t\t\t\t\t\t"+f.getFatIdPaciente()+"\n");
 		}
 		
 		taListarFatura.setText(buffer.toString());
