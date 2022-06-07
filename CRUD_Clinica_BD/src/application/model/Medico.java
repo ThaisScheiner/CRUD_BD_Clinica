@@ -1,20 +1,17 @@
 package application.model;
 
-public class Paciente 
+public class Medico 
 {
 	private int id;
 	private String nome;
-	private String cpf;
+	private String crm;
 	private String logradouro;
 	private String numero;
 	private String cep;
 	private String bairro;
 	private String telRes;
 	private String telCel;
-	private String email;
-	private String sexo;
-	private Medico medico;
-	
+	private String especialidade;
 	public int getId() {
 		return id;
 	}
@@ -27,11 +24,11 @@ public class Paciente
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getCpf() {
-		return cpf;
+	public String getCrm() {
+		return crm;
 	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setCrm(String crm) {
+		this.crm = crm;
 	}
 	public String getLogradouro() {
 		return logradouro;
@@ -69,33 +66,17 @@ public class Paciente
 	public void setTelCel(String telCel) {
 		this.telCel = telCel;
 	}
-	public String getEmail() {
-		return email;
+	public String getEspecialidade() {
+		return especialidade;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEspecialidade(String especialidade) {
+		this.especialidade = especialidade;
 	}
-	public String getSexo() {
-		return sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-	public Medico getMedico() {
-		return medico;
-	}
-	public void setMedico(Medico medico) {
-		this.medico = medico;
-	}
-	
 	@Override
 	public String toString() {
-		return "[id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", logradouro=" + logradouro + ", numero="
+		return "[id=" + id + ", nome=" + nome + ", crm=" + crm + ", logradouro=" + logradouro + ", numero="
 				+ numero + ", cep=" + cep + ", bairro=" + bairro + ", telRes=" + telRes + ", telCel=" + telCel
-				+ ", email=" + email + ", sexo=" + sexo + ", medico=" + medico + "]";
+				+ ", especialidade=" + especialidade + "]";
 	}
-	
-	
-	
-	
+
 }

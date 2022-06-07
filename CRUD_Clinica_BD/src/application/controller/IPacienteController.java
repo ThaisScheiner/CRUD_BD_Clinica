@@ -5,9 +5,11 @@ import application.model.Paciente;
 
 public interface IPacienteController
 {
-	public void inserePaciente(Paciente p) throws SQLException, ClassNotFoundException;
-	public void atualizarPaciente(Paciente p) throws SQLException, ClassNotFoundException;
-	public void excluiPaciente(Paciente p) throws SQLException, ClassNotFoundException;
-	public void buscaPaciente(Paciente p) throws SQLException, ClassNotFoundException;
-	public void buscaPacientes() throws ClassNotFoundException, SQLException;
+	public void inserePaciente(Paciente p) throws ClassNotFoundException, SQLException;
+	public void atualizarPaciente(Paciente p) throws ClassNotFoundException, SQLException;
+	public void excluiPaciente(Paciente p) throws ClassNotFoundException, SQLException;
+	public void buscaPacientes(Paciente p) throws ClassNotFoundException, SQLException;
+	public void listarPacientes() throws ClassNotFoundException, SQLException;
+	
+	
 }
