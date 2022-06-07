@@ -92,7 +92,7 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                          <children>
+                          
                         <TextField fx:id="txtId" GridPane.columnIndex="1" />
                         <TextField fx:id="txtNome" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="txtCpf" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -124,11 +124,33 @@
                         <Label text="ID do Médico" GridPane.rowIndex="11" />
                         <Label fx:id="lblNomeMedico" text="Nome do Médico" GridPane.columnIndex="2" GridPane.rowIndex="11" />
                        
-                     </children>
+                  
                </children></AnchorPane>
       </content>
     </Tab>
     
+     <Tab text="EXAME">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ScrollPane layoutX="14.0" layoutY="308.0">
+                     <content>
+                        <TextArea fx:id="taListarExame" prefHeight="200.0" prefWidth="715.0" />
+                     </content>
+                  </ScrollPane>
+                  <Button fx:id="btnInserirExame" layoutX="61.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Inserir" />
+                  <Button fx:id="btnAtualizarExame" layoutX="231.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Atualizar" />
+                  <Button fx:id="btnExcluirExame" layoutX="434.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Excluir" />
+                  <Button fx:id="btnListarExame" layoutX="635.0" layoutY="261.0" mnemonicParsing="false" onAction="#acaoExame" text="Listar" />
+                  <TextField fx:id="txtExaCodigo" layoutX="61.0" layoutY="43.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="230.0" promptText="Código do Exame " />
+                  <TextField fx:id="txtExaNome" layoutX="61.0" layoutY="81.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="622.0" promptText="Nome do Exame" />
+                  <TextField fx:id="txtExaDescricao" layoutX="63.0" layoutY="117.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="619.0" promptText="Descrição do Exame (Instruções de preparo antes de realizar o exame)" />
+                  <Button fx:id="btnBuscarExame" layoutX="328.0" layoutY="43.0" mnemonicParsing="false" onAction="#acaoExame" text="Buscar" />
+                  <TextField fx:id="txtPacCodigoExame" layoutX="63.0" layoutY="157.0" onAction="#copiaPaciente" prefHeight="25.0" prefWidth="275.0" promptText="Id do Paciente" />
+                  <Label fx:id="lblPacCodigoExame" layoutX="377.0" layoutY="158.0" onDragDetected="#copiaPaciente" prefHeight="24.0" prefWidth="306.0" text="Nome do Paciente" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
     
      <Tab text="EXAME">
       <content>

@@ -24,8 +24,8 @@ public class PacienteDAO implements IPacienteDAO
 	public void inserePaciente(Paciente p) throws SQLException, ClassNotFoundException 
 	{
 		String sql = "INSERT INTO paciente (PacienteId, PacienteNome)";
-		sql += "VALUES ('" + p.getPacienteId() + "', ";
-		sql += " '" + p.getPacienteNome() + "') ";
+		sql += "VALUES ('" + p.getId() + "', ";
+		sql += " '" + p.getNome() + "') ";
 	
 		System.out.println("Query preparada: " + sql);
 		try 
@@ -48,8 +48,8 @@ public class PacienteDAO implements IPacienteDAO
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		
-		ps.setString(1, p.getPacienteNome());
-		ps.setInt(2, p.getPacienteId());
+		ps.setString(1, p.getNome());
+		ps.setInt(2, p.getId());
 		
 		ps.execute();
 		ps.close();
@@ -62,7 +62,7 @@ public class PacienteDAO implements IPacienteDAO
 		String sql = "DELETE FROM paciente WHERE PacienteId = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
-		ps.setInt(1, p.getPacienteId());
+		ps.setInt(1, p.getId());
 		
 		ps.execute();
 		ps.close();
@@ -76,14 +76,14 @@ public class PacienteDAO implements IPacienteDAO
 		String sql = "SELECT * FROM paciente WHERE PacienteId = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
-		ps.setInt(1, p.getPacienteId());
+		ps.setInt(1, p.getId());
 		
 		int cont = 0;
 		ResultSet rs = ps.executeQuery();
 		
 		if(rs.next())
 		{
-			p.setPacienteNome(rs.getString("PacienteNome"));
+			p.setNome(rs.getString("PacienteNome"));
 			cont++;
 		}
 		
@@ -111,8 +111,8 @@ public class PacienteDAO implements IPacienteDAO
 		while (rs.next())
 		{
 			Paciente p = new Paciente();
-			p.setPacienteId(rs.getInt("PacienteId"));
-			p.setPacienteNome(rs.getString("PacienteNome"));
+			p.setId(rs.getInt(""));
+			p.setNome(rs.getString(""));
 			
 			listaPacientes.add(p);
 		}

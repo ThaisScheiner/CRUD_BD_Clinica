@@ -380,9 +380,9 @@ public class PrincipalController {
 						} else if (cmd.contains("Atualizar")) {
 							pacienteController.atualizarPaciente(p);
 						} else if (cmd.contains("Excluir")) {
-							pacienteController.excluirPaciente(p);
+							pacienteController.excluiPaciente(p);
 						} else if (cmd.contains("Buscar") || cmd.contains("txtId")) {
-							pacienteController.buscaPaciente(p);
+							pacienteController.buscaPacientes(p);
 						}
 					}
 				} catch (ClassNotFoundException | SQLException e) {
