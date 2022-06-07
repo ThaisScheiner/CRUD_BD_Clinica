@@ -53,7 +53,6 @@
                   <TextField fx:id="txtExaDescricao" layoutX="63.0" layoutY="117.0" onAction="#acaoExame" prefHeight="25.0" prefWidth="619.0" promptText="Descrição do Exame (Instruções de preparo antes de realizar o exame)" />
                   <Button fx:id="btnBuscarExame" layoutX="328.0" layoutY="43.0" mnemonicParsing="false" onAction="#acaoExame" text="Buscar" />
                   <TextField fx:id="txtPacCodigoExame" layoutX="63.0" layoutY="157.0" onAction="#copiaPaciente" prefHeight="25.0" prefWidth="275.0" promptText="Id do Paciente" />
-                  <DatePicker fx:id="dtData" layoutX="63.0" layoutY="202.0" onAction="#acaoExame" promptText="Data do Exame" />
                   <Label fx:id="lblPacCodigoExame" layoutX="377.0" layoutY="158.0" onDragDetected="#copiaPaciente" prefHeight="24.0" prefWidth="306.0" text="Nome do Paciente" />
                </children></AnchorPane>
       </content>

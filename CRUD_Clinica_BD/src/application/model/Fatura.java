@@ -45,9 +45,10 @@ public class Fatura
 	}
 	@Override
 	public String toString() {
-		return "[fatId=" + fatId + ", fatNome=" + fatNome + ", fatDescricao=" + fatDescricao + ", fatValor="
-				+ fatValor + ", fatData=" + ", fatIdPaciente= ]";
+		return "Fatura [fatId=" + fatId + ", fatNome=" + fatNome + ", fatDescricao=" + fatDescricao + ", fatValor="
+				+ fatValor + ", fatIdPaciente=" + fatIdPaciente + "]";
 	}
+
 	
 	
 }

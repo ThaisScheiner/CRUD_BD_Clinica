@@ -285,27 +285,14 @@ public class PrincipalController {
 		{
 			txtFatIdPaciente.setText(txtPacCodigo.getText());
 			lblFatNomePaciente.setText(txtPacNome.getText());
-			//txtPacCodigoExame.setText(txtPacCodigoExame.getText());
-			//lblPacCodigoExame.setText(txtPacNome.getText());
-		}
-		
-	}
-	
-	@FXML
-	public void copiaPacienteExame(ActionEvent event) 
-	{
-		if(txtPacCodigo.getText().isEmpty() || txtPacCodigo.getText().isEmpty())
-		{
-			JOptionPane.showMessageDialog(null, "Preencha os campos", "Erro", JOptionPane.ERROR_MESSAGE);
-		}
-		else
-		{
+			
 			txtPacCodigoExame.setText(txtPacCodigo.getText());
 			lblPacCodigoExame.setText(txtPacNome.getText());
+			
+			
 		}
 		
 	}
-	
 	
 	
 	

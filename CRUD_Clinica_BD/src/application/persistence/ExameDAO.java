@@ -50,8 +50,9 @@ public class ExameDAO implements IExameDAO
 		
 		ps.setString(1, e.getExaNome());
 		ps.setString(2, e.getExaDescricao());
-		ps.setInt(3, e.getExaId());
-		ps.setInt(4, e.getExaIdPaciente());
+		ps.setInt(3, e.getExaIdPaciente());
+		ps.setInt(4, e.getExaId());
+		
 		
 		ps.execute();
 		ps.close();
@@ -86,6 +87,7 @@ public class ExameDAO implements IExameDAO
 		{
 			e.setExaNome(rs.getString("ExaNome"));
 			e.setExaDescricao(rs.getString("ExaDescricao"));
+			e.setExaIdPaciente(rs.getInt("ExaIdPaciente"));
 			e.setExaIdPaciente(rs.getInt("ExaIdPaciente"));
 			cont++;
 		}
