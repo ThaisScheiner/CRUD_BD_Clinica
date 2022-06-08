@@ -9,12 +9,11 @@ public class Paciente
 	private String numero;
 	private String cep;
 	private String bairro;
-	private String telRes;
-	private String telCel;
+	private String telefone_residencial;
+	private String telefone_celular;
 	private String email;
 	private String sexo;
-	private Medico medico;
-	
+	private int Idmedico;
 	public int getId() {
 		return id;
 	}
@@ -57,17 +56,17 @@ public class Paciente
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
-	public String getTelRes() {
-		return telRes;
+	public String getTelefone_residencial() {
+		return telefone_residencial;
 	}
-	public void setTelRes(String telRes) {
-		this.telRes = telRes;
+	public void setTelefone_residencial(String telefone_residencial) {
+		this.telefone_residencial = telefone_residencial;
 	}
-	public String getTelCel() {
-		return telCel;
+	public String getTelefone_celular() {
+		return telefone_celular;
 	}
-	public void setTelCel(String telCel) {
-		this.telCel = telCel;
+	public void setTelefone_celular(String telefone_celular) {
+		this.telefone_celular = telefone_celular;
 	}
 	public String getEmail() {
 		return email;
@@ -81,21 +80,20 @@ public class Paciente
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	public Medico getMedico() {
-		return medico;
+	public int getIdmedico() {
+		return Idmedico;
 	}
-	public void setMedico(Medico medico) {
-		this.medico = medico;
+	public void setIdmedico(int idmedico) {
+		Idmedico = idmedico;
 	}
-	
 	@Override
 	public String toString() {
-		return "[id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", logradouro=" + logradouro + ", numero="
-				+ numero + ", cep=" + cep + ", bairro=" + bairro + ", telRes=" + telRes + ", telCel=" + telCel
-				+ ", email=" + email + ", sexo=" + sexo + ", medico=" + medico + "]";
+		return "Paciente [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", logradouro=" + logradouro + ", numero="
+				+ numero + ", cep=" + cep + ", bairro=" + bairro + ", telefone_residencial=" + telefone_residencial
+				+ ", telefone_celular=" + telefone_celular + ", email=" + email + ", sexo=" + sexo + ", Idmedico="
+				+ Idmedico + "]";
 	}
 	
 	
-	
-	
+
 }

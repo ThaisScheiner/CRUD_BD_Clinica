@@ -53,8 +53,8 @@ private Connection conn;
 		ps.setString(6, m.getBairro());
 		ps.setString(7, m.getTelefone_Residencial());
 		ps.setString(8, m.getTelefone_Celular());
-		ps.setString(10, m.getEspecialidade());
-		ps.setInt(11, m.getIdMedico());
+		ps.setString(9, m.getEspecialidade());
+		ps.setInt(10, m.getIdMedico());
 		
 		ps.execute();
 		ps.close();
@@ -96,7 +96,8 @@ private Connection conn;
 		cont++;
 	}
 	
-	if(cont == 0) {
+	if(cont == 0) 
+	{
 		m = new Medico();
 	}
 		rs.close();

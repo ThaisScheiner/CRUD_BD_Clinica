@@ -258,13 +258,22 @@ public class PrincipalController {
 							m.setTelefone_Celular(txtTelCelMedico.getText());
 							m.setEspecialidade(txtEspecialidade.getText());
 
-							if (cmd.contains("btnInserirMedico")) {
+							if (cmd.contains("btnInserirMedico")) 
+							{
 								medicoController.inserirMedico(m);
-							} else if (cmd.contains("btnAtualizarMedico")) {
+								JOptionPane.showMessageDialog(null, "Médico inserido com sucesso");
+							} 
+							else if (cmd.contains("btnAtualizarMedico"))
+							{
 								medicoController.atualizarMedico(m);
-							} else if (cmd.contains("btnExcluirMedico")) {
+								JOptionPane.showMessageDialog(null, "Médico atualizado com sucesso");
+							} 
+							else if (cmd.contains("btnExcluirMedico"))
+							{
 								medicoController.excluirMedico(m);
-							} else if (cmd.contains("btnBuscarMedico") || cmd.contains("txtIdMedico")) {
+								JOptionPane.showMessageDialog(null, "Médico excluido com sucesso");
+							} 
+							else if (cmd.contains("btnBuscarMedico") || cmd.contains("txtIdMedico")) {
 								medicoController.buscaMedico(m);
 							}
 						}
@@ -393,18 +402,27 @@ public class PrincipalController {
 						p.setNumero(txtNumero.getText());
 						p.setCep(txtCep.getText());
 						p.setBairro(txtBairro.getText());
-						p.setTelRes(txtTelRes.getText());
-						p.setTelCel(txtTelCel.getText());
+						p.setTelefone_residencial(txtTelRes.getText());
+						p.setTelefone_celular(txtTelCel.getText());
 						p.setEmail(txtEmail.getText());
 						p.setSexo(txtSexo.getText());
 
-						if (cmd.contains("Inserir")) {
+						if (cmd.contains("Inserir")) 
+						{
 							pacienteController.inserirPaciente(p);
-						} else if (cmd.contains("Atualizar")) {
+							JOptionPane.showMessageDialog(null, "Paciente inserido com sucesso");
+						} 
+						else if (cmd.contains("Atualizar"))
+						{
 							pacienteController.atualizarPaciente(p);
-						} else if (cmd.contains("Excluir")) {
+							JOptionPane.showMessageDialog(null, "Paciente atualizado com sucesso");
+						}
+						else if (cmd.contains("Excluir")) 
+						{
 							pacienteController.excluiPaciente(p);
-						} else if (cmd.contains("Buscar") || cmd.contains("txtId")) {
+							JOptionPane.showMessageDialog(null, "Paciente excluido com sucesso");
+						}
+						else if (cmd.contains("Buscar") || cmd.contains("txtId")) {
 							pacienteController.buscaPacientes(p);
 						}
 					}

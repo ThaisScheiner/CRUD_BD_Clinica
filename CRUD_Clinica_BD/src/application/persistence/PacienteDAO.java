@@ -23,7 +23,7 @@ private Connection conn;
 
 	@Override
 	public void inserirPaciente(Paciente p) throws SQLException {
-		String sql = "INSERT INTO paciente VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO paciente VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, p.getId());
@@ -33,10 +33,11 @@ private Connection conn;
 		ps.setString(5, p.getNumero());
 		ps.setString(6, p.getCep());
 		ps.setString(7, p.getBairro());
-		ps.setString(8, p.getTelRes());
-		ps.setString(9, p.getTelCel());
+		ps.setString(8, p.getTelefone_residencial());
+		ps.setString(9, p.getTelefone_celular());
 		ps.setString(10, p.getEmail());
 		ps.setString(11, p.getSexo());
+		ps.setInt(12, p.getIdmedico());
 		
 		ps.execute();
 		ps.close();
@@ -46,7 +47,7 @@ private Connection conn;
 
 	@Override
 	public void atualizarPaciente(Paciente p) throws SQLException {
-	String sql = "UPDATE paciente SET nome = ?, cpf = ?, logradouro = ?, numero = ?, cep = ?,bairro = ?,telres = ?, telcel = ?, email = ?, sexo = ? WHERE id = ?";
+	String sql = "UPDATE paciente SET nome = ?, cpf = ?, logradouro = ?, numero = ?, cep = ?,bairro = ?,telefone_residencial = ?, telefone_celular = ?, email = ?, sexo = ? WHERE id = ?";
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
@@ -57,11 +58,12 @@ private Connection conn;
 		ps.setString(4, p.getNumero());
 		ps.setString(5, p.getCep());
 		ps.setString(6, p.getBairro());
-		ps.setString(7, p.getTelRes());
-		ps.setString(8, p.getTelCel());
+		ps.setString(7, p.getTelefone_residencial());
+		ps.setString(8, p.getTelefone_celular());
 		ps.setString(9, p.getEmail());
 		ps.setString(10, p.getSexo());
-		ps.setInt(11, p.getId());
+		ps.setInt(11, p.getIdmedico());
+		ps.setInt(12, p.getId());
 		
 		ps.execute();
 		ps.close();
@@ -136,18 +138,19 @@ private Connection conn;
 		p.setNumero(rs.getString("numero"));
 		p.setCep(rs.getString("cep"));
 		p.setBairro(rs.getString("bairro"));
-		p.setTelRes(rs.getString("telres"));
-		p.setTelCel(rs.getString("telcel"));
+		p.setTelefone_residencial(rs.getString("telefone_residencial"));
+		p.setTelefone_celular(rs.getString("telefone_celular"));
 		p.setEmail(rs.getString("email"));
 		p.setSexo(rs.getString("sexo"));
-		p.setMedico(m);
+		p.setIdmedico(rs.getInt("Idmedico"));
 		cont++;
 	}
 	
-	if(cont == 0) {
+	if(cont == 0) 
+	{
+		
 		p = new Paciente();
-		Medico m = new Medico();
-		p.setMedico(m);
+		
 	}
 		rs.close();
 		ps.close();
@@ -211,8 +214,8 @@ private Connection conn;
 			p.setNumero(rs.getString("numero"));
 			p.setCep(rs.getString("cep"));
 			p.setBairro(rs.getString("bairro"));
-			p.setTelRes(rs.getString("telres"));
-			p.setTelCel(rs.getString("telcel"));
+			p.setTelefone_residencial(rs.getString("telres"));
+			p.setTelefone_celular(rs.getString("telcel"));
 			p.setEmail(rs.getString("email"));
 			p.setSexo(rs.getString("sexo"));
 			

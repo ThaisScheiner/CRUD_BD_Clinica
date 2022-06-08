@@ -88,8 +88,8 @@ public class PacienteController implements IPacienteController
 		txtNumero.setText(p.getNumero());
 		txtCep.setText(p.getCep());
 		txtBairro.setText(p.getBairro());
-		txtTelRes.setText(p.getTelRes());
-		txtTelCel.setText(p.getTelCel());
+		txtTelRes.setText(p.getTelefone_residencial());
+		txtTelCel.setText(p.getTelefone_celular());
 		txtEmail.setText(p.getEmail());
 		txtSexo.setText(p.getSexo());
 		
@@ -108,7 +108,7 @@ public class PacienteController implements IPacienteController
 		for (Paciente p : listarPacientes) {
 			buffer.append(p.getId() + "\t\t" + p.getNome() + "\t\t" + p.getCpf() + "\t\t"
 					+ p.getLogradouro() + "\t\t" + p.getNumero() + "\n" + p.getCep() + "\t\t"
-					+ p.getBairro() + "\t\t" + p.getTelRes() + "\t\t" + p.getTelCel() + "\t\t"
+					+ p.getBairro() + "\t\t" + p.getTelefone_residencial() + "\t\t" + p.getTelefone_celular() + "\t\t"
 					+ p.getEmail() + "\t\t" + p.getSexo() + "\t\t" + "\n");
 		}
 		ltPaciente.setText(buffer.toString());

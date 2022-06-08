@@ -19,11 +19,12 @@ primary key(IdMedico)
 go
 create table paciente (
 id						int				not null,
-nome					varchar(255)    not null,
-logradouro				char(255)       not null,
-numero					char(100)       not null,
+nome					varchar(255)	not null,
+cpf						varchar(255)    not null,
+logradouro				varchar(255)       not null,
+numero					char(8)       not null,
 cep						char(8)         not null,
-bairro					char(255)       not null,
+bairro					varchar(255)       not null,
 telefone_residencial	char(10)        not null,
 telefone_celular		char(11)        not null,
 email					varchar(255)    not null,
@@ -66,5 +67,3 @@ ExaIdPaciente	int				not null,
 PRIMARY KEY(ExaId),
 foreign key (ExaIdPaciente) references Paciente(id)
 )
-
-
