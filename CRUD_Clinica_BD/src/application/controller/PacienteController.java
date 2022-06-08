@@ -24,6 +24,7 @@ public class PacienteController implements IPacienteController
 	private TextField txtTelCel;
 	private TextField txtEmail;
 	private TextField txtSexo;
+	private TextField txtIDMedico;
 	private TextArea ltPaciente;
 
 	public PacienteController(TextField txtId, TextField txtNome, TextField txtCpf, TextField txtLogradouro,

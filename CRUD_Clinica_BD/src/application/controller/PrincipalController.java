@@ -406,6 +406,7 @@ public class PrincipalController {
 						p.setTelefone_celular(txtTelCel.getText());
 						p.setEmail(txtEmail.getText());
 						p.setSexo(txtSexo.getText());
+						p.setPacIdMedico((Integer.parseInt(txtIdMedico.getText())));
 
 						if (cmd.contains("Inserir")) 
 						{

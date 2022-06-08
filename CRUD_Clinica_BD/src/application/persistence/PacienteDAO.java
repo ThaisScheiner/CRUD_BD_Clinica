@@ -37,7 +37,7 @@ private Connection conn;
 		ps.setString(9, p.getTelefone_celular());
 		ps.setString(10, p.getEmail());
 		ps.setString(11, p.getSexo());
-		ps.setInt(12, p.getIdmedico());
+		ps.setInt(12, p.getPacIdMedico());
 		
 		ps.execute();
 		ps.close();
@@ -47,7 +47,7 @@ private Connection conn;
 
 	@Override
 	public void atualizarPaciente(Paciente p) throws SQLException {
-	String sql = "UPDATE paciente SET nome = ?, cpf = ?, logradouro = ?, numero = ?, cep = ?,bairro = ?,telefone_residencial = ?, telefone_celular = ?, email = ?, sexo = ? WHERE id = ?";
+	String sql = "UPDATE paciente SET nome = ?, cpf = ?, logradouro = ?, numero = ?, cep = ?,bairro = ?,telefone_residencial = ?, telefone_celular = ?, email = ?, sexo = ?, PacIdMedico = ? WHERE id = ?";
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
@@ -62,7 +62,7 @@ private Connection conn;
 		ps.setString(8, p.getTelefone_celular());
 		ps.setString(9, p.getEmail());
 		ps.setString(10, p.getSexo());
-		ps.setInt(11, p.getIdmedico());
+		ps.setInt(11, p.getPacIdMedico());
 		ps.setInt(12, p.getId());
 		
 		ps.execute();
@@ -84,6 +84,9 @@ private Connection conn;
 
 	@Override
 	public Paciente buscaPaciente(Paciente p) throws SQLException {
+		String sql = "select nome, cpf, logradouro, numero, cep, bairro, telefone_residencial, telefone_celular, email, sexo FROM paciente WHERE = ?";
+		
+		/*
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT p.id AS idPaciente,"
 				+ " p.nome AS nomePaciente,"
@@ -96,7 +99,7 @@ private Connection conn;
 				+ " p.telcel AS telcelPaciente,"
 				+ " p.email AS emailPaciente,"
 				+ " p.sexo AS sexoPaciente");
-		sql.append("SELECT IdMedico,"
+		sql.append("SELECT m.IdMedico,"
 				+ " m.nome AS nomeMedico,"
 				+ " m.crm AS crmMedico,"
 				+ " m.logradouro AS logradouroMedico,"
@@ -107,8 +110,12 @@ private Connection conn;
 				+ " m.telcel AS telcelMedico,"
 				+ " m.especialidade AS especialidadeMedico");
 		sql.append("FROM paciente p INNER JOIN medico m");
-		sql.append("ON p.IdMedico = m.IdMedico");
+		sql.append("ON p.PacIdMedico = m.IdMedico");
 		sql.append("WHERE p.Id = ?");
+	*/	
+		
+		
+	
 	PreparedStatement ps = conn.prepareStatement(sql.toString());
 	ps.setInt(1, p.getId());	
 	
@@ -142,7 +149,7 @@ private Connection conn;
 		p.setTelefone_celular(rs.getString("telefone_celular"));
 		p.setEmail(rs.getString("email"));
 		p.setSexo(rs.getString("sexo"));
-		p.setIdmedico(rs.getInt("Idmedico"));
+		p.setPacIdMedico(rs.getInt("PacIdMedico"));
 		cont++;
 	}
 	
@@ -160,6 +167,8 @@ private Connection conn;
 	@Override
 	public List<Paciente> listaPacientes() throws SQLException {
 		List<Paciente> listaPacientes = new ArrayList<Paciente>();
+		String sql = "select nome, cpf, logradouro, numero, cep, bairro, telefone_residencial, telefone_celular, email, sexo FROM paciente ";
+		/*
 		StringBuffer sql = new StringBuffer();
 		sql.append("SELECT p.id AS idPaciente,"
 				+ " p.nome AS nomePaciente,"
@@ -168,22 +177,24 @@ private Connection conn;
 				+ " p.numero AS numeroPaciente,"
 				+ " p.cep AS cepPaciente,"
 				+ " p.bairro AS bairroPaciente,"
-				+ " p.telres AS telresPaciente,"
-				+ " p.telcel AS telcelPaciente,"
+				+ " p.telefone_residencial AS telresPaciente,"
+				+ " p.telefone_celular AS telcelPaciente,"
 				+ " p.email AS emailPaciente,"
-				+ " p.sexo AS sexoPaciente");
-		sql.append("SELECT IdMedico,"
-				+ " m.nome AS nomeMedico,"
+				+ " p.sexo AS sexoPaciente,"
+				+ " p.PacIdMedico AS IdMedico");
+		sql.append("SELECT m.IdMedico,"
 				+ " m.crm AS crmMedico,"
+				+ " m.nome AS nomeMedico,"
 				+ " m.logradouro AS logradouroMedico,"
-				+ " m.numero AS numeroMedico,"
+				+ " m.Numero AS numeroMedico,"
 				+ " m.cep AS cepMedico,"
 				+ " m.bairro AS bairroMedico,"
-				+ " m.telres AS telresMedico,"
-				+ " m.telcel AS telcelMedico,"
+				+ " m.telefone_Residencial AS telresMedico,"
+				+ " m.telefone_Celular AS telcelMedico,"
 				+ " m.especialidade AS especialidadeMedico");
 		sql.append("FROM paciente p INNER JOIN medico m");
-		sql.append("ON p.IdMedico = m.IdMedico");
+		sql.append("ON p.PacIdMedico = m.IdMedico");
+		*/
 		
 		PreparedStatement ps = conn.prepareStatement(sql.toString());
 		
@@ -196,8 +207,8 @@ private Connection conn;
 			Medico m = new Medico();
 			
 			m.setIdMedico(rs.getInt("IdMedico"));
-			m.setNome(rs.getString("nome"));
 			m.setCrm(rs.getString("crm"));
+			m.setNome(rs.getString("nome"));
 			m.setLogradouro(rs.getString("logradouro"));
 			m.setNumero(rs.getString("numero"));
 			m.setCep(rs.getString("cep"));
@@ -205,6 +216,7 @@ private Connection conn;
 			m.setTelefone_Residencial(rs.getString("telefone_Residencial"));
 			m.setTelefone_Celular(rs.getString("telefone_Celular"));
 			m.setEspecialidade(rs.getString("especialidade"));
+			//m.setIdMedico(rs.getInt("IdMedico"));
 			
 			Paciente p = new Paciente();	
 			p.setId(rs.getInt("id"));
@@ -218,6 +230,7 @@ private Connection conn;
 			p.setTelefone_celular(rs.getString("telcel"));
 			p.setEmail(rs.getString("email"));
 			p.setSexo(rs.getString("sexo"));
+			p.setPacIdMedico(rs.getInt("PacIdMedico"));
 			
 			listaPacientes.add(p);
 		}

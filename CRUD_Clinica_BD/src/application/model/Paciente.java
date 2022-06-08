@@ -13,7 +13,7 @@ public class Paciente
 	private String telefone_celular;
 	private String email;
 	private String sexo;
-	private int Idmedico;
+	private int PacIdMedico;
 	public int getId() {
 		return id;
 	}
@@ -80,19 +80,21 @@ public class Paciente
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	public int getIdmedico() {
-		return Idmedico;
+	public int getPacIdMedico() {
+		return PacIdMedico;
 	}
-	public void setIdmedico(int idmedico) {
-		Idmedico = idmedico;
+	public void setPacIdMedico(int pacIdMedico) {
+		PacIdMedico = pacIdMedico;
 	}
 	@Override
 	public String toString() {
 		return "Paciente [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", logradouro=" + logradouro + ", numero="
 				+ numero + ", cep=" + cep + ", bairro=" + bairro + ", telefone_residencial=" + telefone_residencial
-				+ ", telefone_celular=" + telefone_celular + ", email=" + email + ", sexo=" + sexo + ", Idmedico="
-				+ Idmedico + "]";
+				+ ", telefone_celular=" + telefone_celular + ", email=" + email + ", sexo=" + sexo + ", PacIdMedico="
+				+ PacIdMedico + "]";
 	}
+
+
 	
 	
 

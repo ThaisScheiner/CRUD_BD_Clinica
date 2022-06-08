@@ -4,10 +4,10 @@ use clinica3
 go
 create table medico(
 IdMedico				int			 not null,
-crm						varchar(255) not null,
+crm						varchar(30) not null,
 nome					varchar(255) not null,
 logradouro				char(255)    not null,
-numero					char(100)    not null,
+numero					char(8)    not null,
 cep						char(8)      not null,
 bairro					char(255)    not null,
 telefone_residencial	char(10)     not null,
@@ -20,7 +20,7 @@ go
 create table paciente (
 id						int				not null,
 nome					varchar(255)	not null,
-cpf						varchar(255)    not null,
+cpf						char(11)    not null,
 logradouro				varchar(255)       not null,
 numero					char(8)       not null,
 cep						char(8)         not null,
@@ -29,9 +29,9 @@ telefone_residencial	char(10)        not null,
 telefone_celular		char(11)        not null,
 email					varchar(255)    not null,
 sexo					char(1)         not null,
-IdMedico				int		   	    not null
+PacIdMedico				int		   	    not null
 primary key(id),
-foreign key(IdMedico) references Medico(IdMedico)
+foreign key(PacIdMedico) references medico(IdMedico)
 )
 go 
 create table fatura (
@@ -54,8 +54,8 @@ ConsIdMedico	   int			        not null,
 ConsIdExame		   int		            not null,
 ConsIdPaciente	   int					not null,
 primary key(ConsId), 
-foreign key(ConsIdPaciente) references Paciente(id),
-foreign key(ConsIdMedico) references Medico(IdMedico)
+foreign key(ConsIdPaciente) references paciente(id),
+foreign key(ConsIdMedico) references medico(IdMedico)
 )
 
 go 
@@ -65,5 +65,5 @@ ExaNome			varchar(150)	not null,
 ExaDescricao	varchar(255)	not null,
 ExaIdPaciente	int				not null,
 PRIMARY KEY(ExaId),
-foreign key (ExaIdPaciente) references Paciente(id)
+foreign key (ExaIdPaciente) references paciente(id)
 )
