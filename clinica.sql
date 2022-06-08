@@ -9,7 +9,7 @@ nome					varchar(255) not null,
 logradouro				char(255)    not null,
 numero					char(100)    not null,
 cep						char(8)      not null,
-Bairro					char(255)    not null,
+bairro					char(255)    not null,
 telefone_residencial	char(10)     not null,
 telefone_celular		char(11)     not null,
 especialidade			varchar(255) not null
