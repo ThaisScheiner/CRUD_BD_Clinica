@@ -8,9 +8,9 @@ import application.model.Paciente;
 
 public interface IPacienteDAO 
 {
-	public void inserePaciente(Paciente p) throws SQLException, ClassNotFoundException;
-	public void atualizarPaciente(Paciente p) throws SQLException, ClassNotFoundException;
-	public void excluiPaciente(Paciente p) throws SQLException, ClassNotFoundException;
+	public void cadastrarPaciente(Paciente p) throws SQLException;
+	public void atualizarPaciente(Paciente p) throws SQLException;
+	public void excluiPaciente(Paciente p) throws SQLException;
 	public Paciente buscaPaciente(Paciente p) throws SQLException;
-	public List<Paciente> buscaPacientes() throws SQLException;
+	public List<Paciente> listaPacientes() throws SQLException;
 }
