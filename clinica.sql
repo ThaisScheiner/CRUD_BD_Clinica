@@ -6,7 +6,7 @@ create table Medico(
 IdMedico				int			 not null,
 crm						varchar(255) not null,
 nome					varchar(255) not null,
-longradouro				char(255)    not null,
+logradouro				char(255)    not null,
 Numero					char(100)    not null,
 cep						char(8)      not null,
 Bairro					char(255)    not null,
@@ -20,7 +20,7 @@ go
 create table Paciente (
 IdPaciente				int				not null,
 nome					varchar(255)    not null,
-longradouro				char(255)       not null,
+logradouro				char(255)       not null,
 Numero					char(100)       not null,
 cep						char(8)         not null,
 Bairro					char(255)       not null,
