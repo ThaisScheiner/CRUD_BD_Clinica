@@ -2,37 +2,35 @@ create database clinica3
 go
 use clinica3
 go
-create table Medico(
+create table medico(
 IdMedico				int			 not null,
 crm						varchar(255) not null,
 nome					varchar(255) not null,
 logradouro				char(255)    not null,
-Numero					char(100)    not null,
+numero					char(100)    not null,
 cep						char(8)      not null,
 Bairro					char(255)    not null,
-Telefone_Residencial	char(10)     not null,
-Telefone_Celular		char(11)     not null,
-Especialidade			varchar(255) not null
+telefone_residencial	char(10)     not null,
+telefone_celular		char(11)     not null,
+especialidade			varchar(255) not null
 primary key(IdMedico)
 )
 
 go
-create table Paciente (
-IdPaciente				int				not null,
+create table paciente (
+Id				int				not null,
 nome					varchar(255)    not null,
 logradouro				char(255)       not null,
-Numero					char(100)       not null,
+numero					char(100)       not null,
 cep						char(8)         not null,
-Bairro					char(255)       not null,
-Telefone_Residencial	char(10)        not null,
-Telefone_Celular		char(11)        not null,
-Email					varchar(255)    not null,
+bairro					char(255)       not null,
+telefone_residencial	char(10)        not null,
+telefone_celular		char(11)        not null,
+email					varchar(255)    not null,
 sexo					char(1)         not null,
-ConsIdMedicamentos		int		        not null,
-IdfatuPaciente		    int			    not null,
-ConsIdMedico			int		   	    not null
-primary key(IdPaciente),
-foreign key(ConsIdMedico) references Medico(IdMedico)
+IdMedico				int		   	    not null
+primary key(id),
+foreign key(IdMedico) references Medico(IdMedico)
 
 )
 go 
@@ -80,3 +78,4 @@ foreign key (ExaIdPaciente) references Paciente(IdPaciente)
 
 
 )
+
