@@ -31,7 +31,6 @@ sexo					char(1)         not null,
 IdMedico				int		   	    not null
 primary key(id),
 foreign key(IdMedico) references Medico(IdMedico)
-
 )
 go 
 create table fatura (
@@ -39,12 +38,9 @@ FatId			int			 not null,
 FatNome			varchar(100) not null,
 FatDescricao	varchar(100) not null,
 FatValor		decimal(7,2) not null,
-FatData			datetime	 not null,
 FatIdPaciente	int			 not null
 PRIMARY KEY (FatId)
 foreign key(fatIdPaciente) references paciente(IdPaciente)
-
-
 )
 
 go
@@ -59,23 +55,15 @@ ConsIdPaciente	   int					not null
 primary key(ConsId), 
 foreign key(ConsIdPaciente) references Paciente(IdPaciente),
 foreign key(ConsIdMedico) references Medico(IdMedico)
-
 )
 
 go 
 create table exame(
 ExaId			int				not null,
-ExaNome			varchar(150)	not null unique,
+ExaNome			varchar(150)	not null,
 ExaDescricao	varchar(255)	not null,
-ExaResultado	varchar(200)	not null,
-ExaIdMedico		int				not null,
-ExaIdPaciente	int				not null,
-ExaData			datetime		not null
+ExaIdPaciente	int				not null
 PRIMARY KEY(ExaId)
-foreign key(ExaIdMedico) references Medico(IdMedico),
 foreign key (ExaIdPaciente) references Paciente(IdPaciente)
-
-
-
 )
 
