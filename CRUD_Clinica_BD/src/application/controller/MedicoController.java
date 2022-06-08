@@ -77,15 +77,15 @@ public class MedicoController implements IMedicoController
 		MedicoDAO mDAO = new MedicoDAO();
 		m = mDAO.buscaMedico(m);
 		
-		txtIdMedico.setText(String.valueOf(m.getId()));
+		txtIdMedico.setText(String.valueOf(m.getIdMedico()));
 		txtNomeMedico.setText(m.getNome());
 		txtCrmMedico.setText(m.getCrm());
 		txtLogradouroMedico.setText(m.getLogradouro());
 		txtNumeroMedico.setText(m.getNumero());
 		txtCepMedico.setText(m.getCep());
 		txtBairroMedico.setText(m.getBairro());
-		txtTelResMedico.setText(m.getTelRes());
-		txtTelCelMedico.setText(m.getTelCel());
+		txtTelResMedico.setText(m.getTelefone_Residencial());
+		txtTelCelMedico.setText(m.getTelefone_Celular());
 		txtEspecialidade.setText(m.getEspecialidade());
 		
 		
@@ -101,9 +101,9 @@ public class MedicoController implements IMedicoController
 		StringBuffer buffer = new StringBuffer(
 				"Id\t\t\t\tNome\t\tCrm\t\tLogradouro\t\tNumero\t\tCep\t\tBairro\t\tTelRes\t\tTelCel\t\tEspecialidade\n");
 		for (Medico m : listarMedicos) {
-			buffer.append(m.getId() + "\t\t" + m.getNome() + "\t\t" + m.getCrm() + "\t\t"
+			buffer.append(m.getIdMedico() + "\t\t" + m.getNome() + "\t\t" + m.getCrm() + "\t\t"
 					+ m.getLogradouro() + "\t\t" + m.getNumero() + "\t\t" + m.getCep() + "\t\t"
-					+ m.getBairro() + "\t\t" + m.getTelRes() + "\t\t" + m.getTelCel() + "\t\t" + m.getEspecialidade() + "\n");
+					+ m.getBairro() + "\t\t" + m.getTelefone_Residencial() + "\t\t" + m.getTelefone_Celular() + "\t\t" + m.getEspecialidade() + "\n");
 		}
 		ltMedicos.setText(buffer.toString());
 	}

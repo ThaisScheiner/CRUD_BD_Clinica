@@ -2,33 +2,34 @@ package application.model;
 
 public class Medico 
 {
-	private int id;
-	private String nome;
+	private int IdMedico;
 	private String crm;
+	private String nome;
 	private String logradouro;
-	private String numero;
+	private String Numero;
 	private String cep;
 	private String bairro;
-	private String telRes;
-	private String telCel;
+	private String telefone_Residencial;
+	private String telefone_Celular;
 	private String especialidade;
-	public int getId() {
-		return id;
+	
+	public int getIdMedico() {
+		return IdMedico;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setIdMedico(int idMedico) {
+		IdMedico = idMedico;
 	}
 	public String getCrm() {
 		return crm;
 	}
 	public void setCrm(String crm) {
 		this.crm = crm;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	public String getLogradouro() {
 		return logradouro;
@@ -37,10 +38,10 @@ public class Medico
 		this.logradouro = logradouro;
 	}
 	public String getNumero() {
-		return numero;
+		return Numero;
 	}
 	public void setNumero(String numero) {
-		this.numero = numero;
+		Numero = numero;
 	}
 	public String getCep() {
 		return cep;
@@ -54,17 +55,17 @@ public class Medico
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
-	public String getTelRes() {
-		return telRes;
+	public String getTelefone_Residencial() {
+		return telefone_Residencial;
 	}
-	public void setTelRes(String telRes) {
-		this.telRes = telRes;
+	public void setTelefone_Residencial(String telefone_Residencial) {
+		this.telefone_Residencial = telefone_Residencial;
 	}
-	public String getTelCel() {
-		return telCel;
+	public String getTelefone_Celular() {
+		return telefone_Celular;
 	}
-	public void setTelCel(String telCel) {
-		this.telCel = telCel;
+	public void setTelefone_Celular(String telefone_Celular) {
+		this.telefone_Celular = telefone_Celular;
 	}
 	public String getEspecialidade() {
 		return especialidade;
@@ -74,9 +75,10 @@ public class Medico
 	}
 	@Override
 	public String toString() {
-		return "[id=" + id + ", nome=" + nome + ", crm=" + crm + ", logradouro=" + logradouro + ", numero="
-				+ numero + ", cep=" + cep + ", bairro=" + bairro + ", telRes=" + telRes + ", telCel=" + telCel
-				+ ", especialidade=" + especialidade + "]";
+		return "Medico [IdMedico=" + IdMedico + ", crm=" + crm + ", nome=" + nome + ", logradouro=" + logradouro
+				+ ", Numero=" + Numero + ", cep=" + cep + ", bairro=" + bairro + ", telefone_Residencial="
+				+ telefone_Residencial + ", telefone_Celular=" + telefone_Celular + ", especialidade=" + especialidade
+				+ "]";
 	}
-
+	
 }

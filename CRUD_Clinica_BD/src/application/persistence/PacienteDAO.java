@@ -117,16 +117,16 @@ private Connection conn;
 		
 		Medico m = new Medico();
 		
-		m.setId(rs.getInt("IdMedico"));
+		m.setIdMedico(rs.getInt("IdMedico"));
 		m.setNome(rs.getString("nome"));
 		m.setCrm(rs.getString("crm"));
 		m.setLogradouro(rs.getString("logradouro"));
 		m.setNumero(rs.getString("numero"));
 		m.setCep(rs.getString("cep"));
 		m.setBairro(rs.getString("bairro"));
-		m.setTelRes(rs.getString("telres"));
-		m.setTelCel(rs.getString("telcel"));
-		m.setEspecialidade(rs.getString("email"));
+		m.setTelefone_Residencial(rs.getString("telefone_Residencial"));
+		m.setTelefone_Celular(rs.getString("telefone_Celular"));
+		m.setEspecialidade(rs.getString("especialidade"));
 		
 		
 		p.setId(rs.getInt("id"));
@@ -192,16 +192,16 @@ private Connection conn;
 		{
 			Medico m = new Medico();
 			
-			m.setId(rs.getInt("IdMedico"));
+			m.setIdMedico(rs.getInt("IdMedico"));
 			m.setNome(rs.getString("nome"));
 			m.setCrm(rs.getString("crm"));
 			m.setLogradouro(rs.getString("logradouro"));
 			m.setNumero(rs.getString("numero"));
 			m.setCep(rs.getString("cep"));
 			m.setBairro(rs.getString("bairro"));
-			m.setTelRes(rs.getString("telres"));
-			m.setTelCel(rs.getString("telcel"));
-			m.setEspecialidade(rs.getString("email"));
+			m.setTelefone_Residencial(rs.getString("telefone_Residencial"));
+			m.setTelefone_Celular(rs.getString("telefone_Celular"));
+			m.setEspecialidade(rs.getString("especialidade"));
 			
 			Paciente p = new Paciente();	
 			p.setId(rs.getInt("id"));

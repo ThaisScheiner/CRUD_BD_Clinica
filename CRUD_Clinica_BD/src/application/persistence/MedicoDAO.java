@@ -23,15 +23,15 @@ private Connection conn;
 		String sql = "INSERT INTO medico VALUES (?,?,?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setInt(1, m.getId());
+		ps.setInt(1, m.getIdMedico());
 		ps.setString(2, m.getNome());
 		ps.setString(3, m.getCrm());
 		ps.setString(4, m.getLogradouro());
 		ps.setString(5, m.getNumero());
 		ps.setString(6, m.getCep());
 		ps.setString(7, m.getBairro());
-		ps.setString(8, m.getTelRes());
-		ps.setString(9, m.getTelCel());
+		ps.setString(8, m.getTelefone_Residencial());
+		ps.setString(9, m.getTelefone_Celular());
 		ps.setString(10, m.getEspecialidade());
 		
 		ps.execute();
@@ -41,21 +41,20 @@ private Connection conn;
 	}
 
 	public void atualizarMedico(Medico m) throws SQLException {
-	String sql = "UPDATE medico SET nome = ?, crm = ?, logradouro = ?, numero = ?, cep = ?,bairro = ?,telres = ?, telcel = ?, especialidade = ? WHERE IdMedico = ?";
+	String sql = "UPDATE Medico SET crm = ?, nome = ?, logradouro = ?, Numero = ?, cep = ?,bairro = ?,telefone_Residencial = ?, telefone_Celular = ?, especialidade = ? WHERE IdMedico = ?";
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
-		
-		ps.setString(1, m.getNome());
-		ps.setString(2, m.getCrm());
+		ps.setString(1, m.getCrm());
+		ps.setString(2, m.getNome());
 		ps.setString(3, m.getLogradouro());
 		ps.setString(4, m.getNumero());
 		ps.setString(5, m.getCep());
 		ps.setString(6, m.getBairro());
-		ps.setString(7, m.getTelRes());
-		ps.setString(8, m.getTelCel());
+		ps.setString(7, m.getTelefone_Residencial());
+		ps.setString(8, m.getTelefone_Celular());
 		ps.setString(10, m.getEspecialidade());
-		ps.setInt(11, m.getId());
+		ps.setInt(11, m.getIdMedico());
 		
 		ps.execute();
 		ps.close();
@@ -67,32 +66,32 @@ private Connection conn;
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
-		ps.setInt(1, m.getId());
+		ps.setInt(1, m.getIdMedico());
 		
 		ps.execute();
 		ps.close();
 	}
 
 	public Medico buscaMedico(Medico m) throws SQLException {
-		String sql = "SELECT IdMedico, nome, crm,logradouro, numero, cep, bairro, telres, telcel, especialidade FROM medico WHERE IdMedico = ?";
+		String sql = "SELECT IdMedico, crm, nome,logradouro, Numero, cep, bairro, telefone_Residencial, telefone_Celular, especialidade FROM medico WHERE IdMedico = ?";
 		
 	PreparedStatement ps = conn.prepareStatement(sql);
-	ps.setInt(1, m.getId());	
+	ps.setInt(1, m.getIdMedico());	
 	
 	int cont = 0;
 	ResultSet rs = ps.executeQuery();
 	
 	if(rs.next()) {	
 
-		m.setId(rs.getInt("IdMedico"));
-		m.setNome(rs.getString("nome"));
+		m.setIdMedico(rs.getInt("IdMedico"));
 		m.setCrm(rs.getString("crm"));
+		m.setNome(rs.getString("nome"));
 		m.setLogradouro(rs.getString("logradouro"));
 		m.setNumero(rs.getString("numero"));
 		m.setCep(rs.getString("cep"));
 		m.setBairro(rs.getString("bairro"));
-		m.setTelRes(rs.getString("telres"));
-		m.setTelCel(rs.getString("telcel"));
+		m.setTelefone_Residencial(rs.getString("telefone_Residencial"));
+		m.setTelefone_Celular(rs.getString("telefone_Celular"));
 		m.setEspecialidade(rs.getString("especialidade"));
 		cont++;
 	}
@@ -106,7 +105,7 @@ private Connection conn;
 	}
 	
 	public List<Medico> listaMedicos() throws SQLException {
-String sql = "select IdMedico,nome, crm, logradouro, numero, cep, bairro,telres, telcel, especialidade FROM medico";
+String sql = "select IdMedico,crm, nome, logradouro, Numero, cep, bairro,telefone_Residencial, telefone_Celular, especialidade FROM medico";
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
@@ -117,16 +116,17 @@ String sql = "select IdMedico,nome, crm, logradouro, numero, cep, bairro,telres,
 		while (rs.next())
 		{
 			Medico m = new Medico();	
-			m.setId(rs.getInt("IdMedico"));
-			m.setNome(rs.getString("nome"));
+			
+			m.setIdMedico(rs.getInt("IdMedico"));
 			m.setCrm(rs.getString("crm"));
+			m.setNome(rs.getString("nome"));
 			m.setLogradouro(rs.getString("logradouro"));
-			m.setNumero(rs.getString("numero"));
+			m.setNumero(rs.getString("Numero"));
 			m.setCep(rs.getString("cep"));
-			m.setBairro(rs.getString("bairro"));
-			m.setTelRes(rs.getString("telres"));
-			m.setTelCel(rs.getString("telcel"));
-			m.setEspecialidade(rs.getString("especialidade"));
+			m.setBairro(rs.getString("Bairro"));
+			m.setTelefone_Residencial(rs.getString("Telefone_Residencial"));
+			m.setTelefone_Celular(rs.getString("Telefone_Celular"));
+			m.setEspecialidade(rs.getString("Especialidade"));
 			listaMedicos.add(m);
 		}
 	

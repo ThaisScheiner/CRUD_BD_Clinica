@@ -247,15 +247,15 @@ public class PrincipalController {
 							medicoController.listarMedicos();
 						} else {
 							Medico m = new Medico();
-							m.setId((Integer.parseInt(txtIdMedico.getText())));
+							m.setIdMedico(Integer.parseInt(txtIdMedico.getText()));
 							m.setNome(txtNomeMedico.getText());
 							m.setCrm(txtCrmMedico.getText());
 							m.setLogradouro(txtLogradouroMedico.getText());
 							m.setNumero(txtNumeroMedico.getText());
 							m.setCep(txtCepMedico.getText());
 							m.setBairro(txtBairroMedico.getText());
-							m.setTelRes(txtTelResMedico.getText());
-							m.setTelCel(txtTelCelMedico.getText());
+							m.setTelefone_Residencial(txtTelRes.getText());
+							m.setTelefone_Celular(txtTelCelMedico.getText());
 							m.setEspecialidade(txtEspecialidade.getText());
 
 							if (cmd.contains("btnInserirMedico")) {
