@@ -20,7 +20,7 @@ go
 create table Paciente (
 IdPaciente				int				not null,
 nome					varchar(255)    not null,
-lougradouro				char(255)       not null,
+longradouro				char(255)       not null,
 Numero					char(100)       not null,
 cep						char(8)         not null,
 Bairro					char(255)       not null,
