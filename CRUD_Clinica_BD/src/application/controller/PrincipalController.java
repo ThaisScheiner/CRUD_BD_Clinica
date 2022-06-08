@@ -178,58 +178,44 @@ public class PrincipalController {
 	{
 		String cmd = event.getSource().toString();
 		System.out.println(cmd);
-		
-		FaturaController faturaController = new FaturaController (txtFatCodigo, txtFatNome, txtFatDescricao, txtFatValor, txtFatIdPaciente, taListarFatura);
-		
-		if((cmd.contains("Inserir") || cmd.contains("Atualizar")) && (txtFatCodigo.getText().isEmpty() && txtFatNome.getText().isEmpty() && txtFatDescricao.getText().isEmpty() && txtFatValor.getText().isEmpty() || txtFatIdPaciente.getText().isEmpty()))
-		{
+
+		FaturaController faturaController = new FaturaController(txtFatCodigo, txtFatNome, txtFatDescricao, txtFatValor,
+				txtFatIdPaciente, taListarFatura);
+
+		if ((cmd.contains("Inserir") || cmd.contains("Atualizar")) && (txtFatCodigo.getText().isEmpty()
+				|| txtFatNome.getText().isEmpty() || txtFatDescricao.getText().isEmpty()
+				|| txtFatValor.getText().isEmpty() || txtFatIdPaciente.getText().isEmpty())) {
 			JOptionPane.showMessageDialog(null, "Preencha o código da Fatura", "ERRO", JOptionPane.ERROR_MESSAGE);
-		}
-		else 
-		{
-			if(cmd.contains("Excluir") && cmd.contains("Buscar") && cmd.contains("txtFatCodigo") && txtFatCodigo.getText().isEmpty() && cmd.contains("txtFatCodigo") && txtPacCodigo.getText().isEmpty())
-			{
+		} else {
+			if ((cmd.contains("Excluir") || cmd.contains("Buscar")) && (txtFatCodigo.getText().isEmpty())) {
 				JOptionPane.showMessageDialog(null, "Preencha o código da Fatura", "ERRO", JOptionPane.ERROR_MESSAGE);
-			}
-			else
-			{
-				try 
-				{
-					if(cmd.contains("Listar"))
-					{
+			} else {
+				try {
+					if (cmd.contains("Listar")) {
 						faturaController.buscaFaturas();
-					}
-					else
-					{
+					} else {
 						Fatura f = new Fatura();
 						f.setFatId((Integer.parseInt(txtFatCodigo.getText())));
 						f.setFatNome(txtFatNome.getText());
 						f.setFatDescricao(txtFatDescricao.getText());
+						f.setFatValor(Double.valueOf(txtFatValor.getText()));
+						;
 						f.setFatIdPaciente((Integer.parseInt(txtFatIdPaciente.getText())));
-						
-						if(cmd.contains("Inserir"))
-						{
+
+						if (cmd.contains("Inserir")) {
 							faturaController.insereFatura(f);
 							JOptionPane.showMessageDialog(null, "Fatura inserida com sucesso");
-						}
-						else if(cmd.contains("Atualizar"))
-						{
+						} else if (cmd.contains("Atualizar")) {
 							faturaController.atualizarFatura(f);
 							JOptionPane.showMessageDialog(null, "Fatura atualizada com sucesso");
-						}
-						else if(cmd.contains("Excluir"))
-						{
+						} else if (cmd.contains("Excluir")) {
 							faturaController.excluiFatura(f);
 							JOptionPane.showMessageDialog(null, "Fatura excluida com sucesso");
-						}
-						else if(cmd.contains("Buscar") || cmd.contains("txtFatId"))
-						{
+						} else if (cmd.contains("Buscar") || cmd.contains("txtFatId")) {
 							faturaController.buscaFatura(f);
 						}
 					}
-				} 
-				catch (ClassNotFoundException | SQLException e) 
-				{
+				} catch (ClassNotFoundException | SQLException e) {
 					JOptionPane.showMessageDialog(null, e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 					e.printStackTrace();
 				}

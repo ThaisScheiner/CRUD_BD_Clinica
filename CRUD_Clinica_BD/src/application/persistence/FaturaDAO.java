@@ -49,15 +49,15 @@ private Connection c;
 	@Override
 	public void atualizarFatura(Fatura f) throws SQLException 
 	{
-		String sql = "UPDATE fatura SET FatNome = ?, FatDescricao = ?, FatValor = ?  WHERE FatId = ?";
+		String sql = "UPDATE fatura SET FatNome = ?, FatDescricao = ?, FatValor = ? FatIdPaciente WHERE FatId = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		
 		ps.setString(1, f.getFatNome());
 		ps.setString(2, f.getFatDescricao());
 		ps.setDouble(3, f.getFatValor());
-		//ps.setInt(4, f.getFatIdPaciente());
-		ps.setInt(4, f.getFatId());
+		ps.setInt(4, f.getFatIdPaciente());
+		ps.setInt(5, f.getFatId());
 		
 		ps.execute();
 		ps.close();
@@ -80,7 +80,7 @@ private Connection c;
 	@Override
 	public Fatura buscaFatura(Fatura f) throws SQLException 
 	{
-		String sql = "SELECT * FROM fatura WHERE FatId = ?";
+		String sql = "SELECT FatId, fatNome, fatDescricao, fatValor, fatIdPaciente FROM fatura WHERE FatId = ?";
 		
 		PreparedStatement ps = c.prepareStatement(sql);
 		ps.setInt(1, f.getFatId());
@@ -90,7 +90,7 @@ private Connection c;
 		
 		if(rs.next())
 		{
-			//f.setFatId(rs.getInt("FatId"));
+			f.setFatId(rs.getInt("FatId"));
 			f.setFatNome(rs.getString("fatNome"));
 			f.setFatDescricao(rs.getString("fatDescricao"));
 			f.setFatValor(rs.getDouble("fatValor"));
