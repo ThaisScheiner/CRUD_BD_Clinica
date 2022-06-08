@@ -8,7 +8,7 @@ import application.model.Paciente;
 
 public interface IPacienteDAO 
 {
-	public void cadastrarPaciente(Paciente p) throws SQLException;
+	public void inserirPaciente(Paciente p) throws SQLException;
 	public void atualizarPaciente(Paciente p) throws SQLException;
 	public void excluiPaciente(Paciente p) throws SQLException;
 	public Paciente buscaPaciente(Paciente p) throws SQLException;

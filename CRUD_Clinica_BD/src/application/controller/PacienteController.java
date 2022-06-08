@@ -47,7 +47,7 @@ public class PacienteController implements IPacienteController
 	public void inserirPaciente(Paciente p) throws ClassNotFoundException, SQLException  
 	{
 		PacienteDAO pDAO = new PacienteDAO();
-		pDAO.inserePaciente(p);
+		pDAO.inserirPaciente(p);
 		limpaCamposPaciente();
 		listarPacientes();
 		
@@ -101,7 +101,7 @@ public class PacienteController implements IPacienteController
 		ltPaciente.setText("");
 		Medico m = new Medico();
 		PacienteDAO pDAO = new PacienteDAO();
-		List<Paciente> listarPacientes = pDAO.buscaPacientes();
+		List<Paciente> listarPacientes = pDAO.listaPacientes();
 
 		StringBuffer buffer = new StringBuffer(
 				"Id\t\t\t\tNome\t\tCpf\t\tLogradouro\t\tNumero\nCep\t\tBairro\t\tTelRes\t\tTelCel\t\tEmail\t\tSexo\t\tProfessor\n");
@@ -134,5 +134,8 @@ public class PacienteController implements IPacienteController
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	
 
 }

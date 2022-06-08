@@ -22,7 +22,7 @@ private Connection conn;
 	}
 
 	@Override
-	public void cadastrarPaciente(Paciente p) throws SQLException {
+	public void inserirPaciente(Paciente p) throws SQLException {
 		String sql = "INSERT INTO paciente VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement ps = conn.prepareStatement(sql);
