@@ -27,7 +27,7 @@ public class GenericDAO
 		*/	
 			//-------------------CONEXÃO COM BANCO DE DADOS SQL SERVER----------------------------------
 			String hostName = "localhost";
-			String dbName = "BDclinica";
+			String dbName = "clinica3";
 			String user = "Thais";
 			String senha = "123456";
 			
